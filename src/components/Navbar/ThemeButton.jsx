@@ -1,5 +1,5 @@
 import {IconButton, Typography } from "@mui/material";
-import { useThemeMode } from "../../utilities/ThemeContextProvider";
+import { useThemeMode } from "../../../utilities/ThemeContextProvider";
 import {FaMoon, FaSun }from 'react-icons/fa'
 
 function ThemeButton() {

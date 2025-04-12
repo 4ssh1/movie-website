@@ -4,7 +4,6 @@
 //   method: 'GET',
 //   headers: {
 //     accept: 'application/json',
-//     Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NDM1OTIxZTcyMDA2YThmMmZjNTFlODE3NDQ5NDliNyIsIm5iZiI6MTczNzkyMTAyNC40NzIsInN1YiI6IjY3OTY5MjAwZDRiYTE3MjVmMTJiMDk4NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Jq7iJxzZLJjx_l7oQOwRAQOCXcnBhbakxNuc-228wbY'
 //   }
 // };
 

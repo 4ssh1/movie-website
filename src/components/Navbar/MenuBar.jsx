@@ -1,4 +1,4 @@
-import { Menu, icons } from "../consts/NavbarConsts"
+import { Menu, icons } from "../../consts/NavbarConsts"
 import { Link } from "react-router-dom"
 
  function MenuBar() {
