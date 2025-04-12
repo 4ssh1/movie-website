@@ -6,10 +6,10 @@ function ThemeButton() {
     const {darkMode, toggleDarkMode} = useThemeMode()
 
   return (
-    <div>
+    <div className="px-4">
         <Typography variant="h4"></Typography>
         <IconButton color="inherit" onClick={toggleDarkMode}>
-            {darkMode ? <FaSun /> : <FaMoon />}
+            {darkMode ? <FaSun size={18} /> : <FaMoon size={18} />}
         </IconButton>
     </div>
   )
