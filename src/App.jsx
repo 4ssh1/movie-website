@@ -1,13 +1,30 @@
-import RoutesConfig from "../RoutesConfig"
+import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
+import RoutesConfig from "../RoutesConfig";
+import ThemeContextProvider, { useThemeMode } from "../utilities/ThemeContextProvider";
 
+function AppContent() {
+  const { darkMode } = useThemeMode(); 
 
-function App() {
+  const theme = createTheme({
+    palette: {
+      mode: darkMode ? "dark" : "light"
+    }
+  });
 
   return (
-    <div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <RoutesConfig />
-    </div>
-  )
+    </ThemeProvider>
+  );
 }
 
-export default App
+function App() {
+  return (
+    <ThemeContextProvider>
+      <AppContent />
+    </ThemeContextProvider>
+  );
+}
+
+export default App;
