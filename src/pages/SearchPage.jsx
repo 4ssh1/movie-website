@@ -1,9 +1,11 @@
+import SearchBar from "../components/Search/SearchBar"
 
 
 function SearchPage() {
   return (
-    <div>
-      
+    <div className="pl-20">
+      <h2 className="paytone text-2xl uppercase">Search</h2>
+      <SearchBar />
     </div>
   )
 }

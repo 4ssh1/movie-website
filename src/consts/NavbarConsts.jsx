@@ -18,6 +18,14 @@ export  const Menu = [
 
 
 export const icons = [
- <SearchIcon />, <AccountCircleIcon />
+  {
+    path: "/search",
+    icon: <SearchIcon />
+  },
+  {
+    path: "",
+    icon: <AccountCircleIcon />
+  }
+ 
 ]
 

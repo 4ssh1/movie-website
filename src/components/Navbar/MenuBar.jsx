@@ -10,7 +10,9 @@ import { Link } from "react-router-dom"
         </span>
       ))}
       {icons.map((icon, index)=>(
-        <span key={index} className="pl-3">{icon}</span>
+        <Link key={index} to={`${icon.path === "/search" && '/search'}`}>
+          <span className="pl-3">{icon.icon}</span>
+        </Link>
       ))}
     </div>
   )

@@ -1,6 +1,7 @@
 import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
 import RoutesConfig from "../RoutesConfig";
 import ThemeContextProvider, { useThemeMode } from "../utilities/ThemeContextProvider";
+import ContextWrapper from "../utilities/ContextWrapper";
 
 function AppContent() {
   const { darkMode } = useThemeMode(); 
@@ -22,7 +23,9 @@ function AppContent() {
 function App() {
   return (
     <ThemeContextProvider>
-      <AppContent />
+      <ContextWrapper>
+        <AppContent />
+      </ContextWrapper>
     </ThemeContextProvider>
   );
 }

@@ -1,14 +1,7 @@
-import { Route, Routes } from "react-router-dom"
-import HomePage from "../pages/HomePage"
+import HomePage from "../pages/HomePage";
 
-function MainRoutes() {
-  return (
-    <>
-      <Routes>
-          <Route path="/" element={ <HomePage />}/>
-      </Routes>
-    </>
-  )
-}
+const mainRoutes = [
+  { path: "/", element: <HomePage /> },
+];
 
-export default MainRoutes
+export default mainRoutes;
