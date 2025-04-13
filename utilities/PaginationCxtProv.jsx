@@ -16,6 +16,6 @@ function PaginationCxtProv({children}) {
 
 export default PaginationCxtProv
 
-export function setCount(){
+export function usePages(){
     return useContext(PageContext)
 }
