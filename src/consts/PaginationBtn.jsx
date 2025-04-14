@@ -15,7 +15,7 @@ function PaginationBtn() {
     }
 
   return (
-    <div className='absolute bottom-2 flex justify-center left-0 w-full'>
+    <div className=' flex justify-center pb-10'>
         <Pagination count={10}
         page={count}
         onChange={()=>handleChange(e)}

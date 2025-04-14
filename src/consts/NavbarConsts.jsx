@@ -20,11 +20,11 @@ export  const Menu = [
 export const icons = [
   {
     path: "/search",
-    icon: <SearchIcon />
+    icon: <SearchIcon className='text-xs'/>
   },
   {
     path: "",
-    icon: <AccountCircleIcon />
+    icon: <AccountCircleIcon  className='text-xs'/>
   }
  
 ]
