@@ -15,12 +15,13 @@ function PaginationBtn() {
     }
 
   return (
-    <div className=' flex justify-center pb-10'>
+    <div className=' flex justify-center pb-10 '>
         <Pagination count={10}
         page={count}
         onChange={()=>handleChange(e)}
         renderItem={(item) => (
-            <PaginationItem className='hover:bg-slate-300' slots={{ previous: ArrowBackIcon, next: ArrowForwardIcon }} {...item} />
+            <PaginationItem className='hover:bg-slate-300 dark:text-white'
+             slots={{ previous: ArrowBackIcon , next: ArrowForwardIcon }} {...item} />
         )}/>
     </div>
   )

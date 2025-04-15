@@ -1,21 +1,20 @@
-import { Box, useTheme } from "@mui/material";
+import { useTheme } from "@mui/material";
+import Footer from "./Footer";
 
 const Layout = ({ children }) => {
   const theme = useTheme()
   const isDark = theme.palette.mode === "dark"
 
   return (
-    <Box 
-      sx={{
-        background: isDark
-          ? "linear-gradient(to right, #0f2027, #203a43, #2c5364)" // dark mode gradient
-          : "linear-gradient(to right, #cfe8ff, #a0c4ff)", // light mode gradient
-        minHeight: "100vh",
-      }}
-      
-    >
-      {children}
-    </Box>
+    <div>
+      <div className={`${isDark ? "bg-gradient-to-b from-[#0f2027] via-[#203a43] to-[#2c5364]"
+            : "bg-gradient-to-b from-[#cfe8ff] to-[#a0c4ff]"} w-full overflow-x-hidden px-1
+            `}>
+        {children}
+      </div>
+      <Footer />
+    </div>
+    
   );
 };
 

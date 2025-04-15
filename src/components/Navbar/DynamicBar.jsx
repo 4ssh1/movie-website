@@ -33,8 +33,11 @@ function DynamicBar() {
           <div className="border-[1px] inline-flex px-1 py-[0.4px] border-slate-600 rounded-2xl gap-1 mt-3">
             {homeSection.buttons.map(button => (
               <button key={button} onClick={()=>setSelectedButton(button)} 
-              className={`${selectButton === button ? "bg-slate-500" : "bg-transparent text-slate-600 dark:text-slate-400 hover:bg-slate-100"}
-               px-3 py-0.5 rounded-2xl transition cursor-pointer font-medium focus:outline-0 text-sm`}>{button}</button>
+              className={`${selectButton === button ? "bg-slate-500" 
+                :
+                 "bg-transparent text-slate-600 dark:text-slate-400 hover:bg-slate-100"}
+               px-3 py-0.5 rounded-2xl transition cursor-pointer font-medium focus:outline-0 text-sm`}>
+                {button}</button>
             ))}
           </div>
         </div>
