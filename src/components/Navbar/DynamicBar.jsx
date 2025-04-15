@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useLocation } from "react-router-dom"
+import { usePages } from "../../../utilities/PaginationCxtProv"
 
 const homeSection = {
         title:  "trending",
@@ -17,13 +18,16 @@ const tvShowsSection = {
         title: 'discover tv shows',
         buttons: ["Popular", "Top Rated"]
     }
+    
+    function DynamicBar() {
+      const location = useLocation()
+      const currentPath = location.pathname
+      const [selectButton, setSelectedButton] = useState("Today")
+      const [selectedMovies, setSelectedMovies] = useState("")
+      const [selectedShows, setSelectedShows] = useState('')
+      const {isDay, setIsDay} = usePages()
 
-function DynamicBar() {
-  const location = useLocation()
-  const currentPath = location.pathname
-  const [selectButton, setSelectedButton] = useState("Today")
-  const [selectedMovies, setSelectedMovies] = useState("")
-  const [selectedShows, setSelectedShows] = useState('')
+  
     
   return (
     <div>
@@ -32,7 +36,7 @@ function DynamicBar() {
           <div className="font-bold text-2xl">{homeSection.title.toUpperCase()}</div>
           <div className="border-[1px] inline-flex px-1 py-[0.4px] border-slate-600 rounded-2xl gap-1 mt-3">
             {homeSection.buttons.map(button => (
-              <button key={button} onClick={()=>setSelectedButton(button)} 
+              <button key={button} onClick={()=>{setSelectedButton(button); setIsDay === "Today"}} 
               className={`${selectButton === button ? "bg-slate-500" 
                 :
                  "bg-transparent text-slate-600 dark:text-slate-400 hover:bg-slate-100"}

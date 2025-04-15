@@ -5,9 +5,10 @@ const PageContext = createContext()
 
 function PaginationCxtProv({children}) {
     const [count, setCount] = useState(0)
+    const [isDay, setIsDay] = useState(null)
 
   return (
-    <PageContext.Provider value={{count, setCount}}>
+    <PageContext.Provider value={{count, setCount, isDay, setIsDay}}>
         {children}
     </PageContext.Provider>
   )

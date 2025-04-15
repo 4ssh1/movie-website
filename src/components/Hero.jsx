@@ -24,11 +24,14 @@ function Hero() {
   const movie = data[index];
 
   return (
-    <div className="w-full sm:h-[50vh] h-[30vh] relative mt-5 rounded-lg overflow-hidden">
+    <div className="w-full sm:h-[50vh] h-[30vh]
+     relative mt-5 rounded-lg overflow-hidden">
       <div
-        className="w-full sm:h-[50vh] h-[30vh] bg-cover bg-center transition-all duration-1000 ease-in-out absolute"
+        className={`w-full sm:h-[50vh] h-[30vh] bg-cover bg-center transition-all duration-1000 ease-in-out absolute ${
+          movie ? `url[${imagePath}/${movie?.backdrop_path}]` : "bg-slate-300 animate-pulse rounded overflow-hidden shadow-lg"
+        }`}
         style={{
-          backgroundImage: movie ? `url(${imagePath}/${movie?.backdrop_path})` : "none",
+          background: movie ? `url(${imagePath}/${movie?.backdrop_path})` : "bg-slate-300 animate-pulse rounded overflow-hidden shadow-lg",
         }}
       ></div>
 
