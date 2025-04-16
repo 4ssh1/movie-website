@@ -9,3 +9,8 @@ export async function fetchTrending(timeWindow = "day"){
     const {data} = await axios.get(`${baseUrl}/trending/all/${timeWindow}?api_key=${apiKey}`)
     return data?.results
 }
+
+export const fetchDetails = async (type, id) => {
+    const res = await axios.get(`${baseUrl}/${type}/${id}?api_key=${apiKey}`)
+    return res
+}

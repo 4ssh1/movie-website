@@ -5,7 +5,7 @@ function Footer() {
     <div className="relative h-[50vh] bg-[url('/collage.jpg')]">
         <div className="absolute bg-slate-800 -z-10  w-full h-full"></div>
         <div className="text-white  backdrop-blur-[4px] h-full flex justify-center
-         gap-10 items-center leading-10 [&>div>p]:cursor-pointer font-bold">
+         sm:gap-10 gap-5 items-center leading-10 [&>div>p]:cursor-pointer sm:font-bold">
             <div>
                 <p><a href="#">Home</a></p>
                 <p><a href="#">Contact us</a></p>
