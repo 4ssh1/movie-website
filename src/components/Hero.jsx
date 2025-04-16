@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react";
 import { fetchTrending, imagePath } from "../api/api";
+import { usePages } from "../../utilities/PaginationCxtProv";
 
 function Hero() {
   const [index, setIndex] = useState(0);
   const [data, setData] = useState([]);
+  const {timeWindow} = usePages()
 
   useEffect(() => {
-    fetchTrending()
+    fetchTrending(timeWindow)
       .then((res) => setData(res))
       .catch((err) => console.log(err));
-  }, []);
+  }, [timeWindow]);
 
   useEffect(() => {
     if (data.length === 0) return;

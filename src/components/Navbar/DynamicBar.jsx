@@ -25,7 +25,7 @@ const tvShowsSection = {
       const [selectButton, setSelectedButton] = useState("Today")
       const [selectedMovies, setSelectedMovies] = useState("")
       const [selectedShows, setSelectedShows] = useState('')
-      const {isDay, setIsDay} = usePages()
+      const {timeWindow, setimeWindow} = usePages()
 
   
     
@@ -36,7 +36,8 @@ const tvShowsSection = {
           <div className="font-bold text-2xl">{homeSection.title.toUpperCase()}</div>
           <div className="border-[1px] inline-flex px-1 py-[0.4px] border-slate-600 rounded-2xl gap-1 mt-3">
             {homeSection.buttons.map(button => (
-              <button key={button} onClick={()=>{setSelectedButton(button); setIsDay === "Today"}} 
+              <button key={button} onClick={()=>{setSelectedButton(button); button === "Today"
+                 ? setimeWindow('day') : setimeWindow("week")}} 
               className={`${selectButton === button ? "bg-slate-500" 
                 :
                  "bg-transparent text-slate-600 dark:text-slate-400 hover:bg-slate-100"}

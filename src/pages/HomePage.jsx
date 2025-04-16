@@ -8,18 +8,18 @@ import Hero from "../components/Hero"
 function HomePage() {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
-  const {isDay, setIsDay} = usePages()
+  const {timeWindow} = usePages()
 
   
   const skeletonArray = new Array(10).fill(0)
 
 
   useEffect(()=>{
-    fetchTrending().then((res)=>{
+    fetchTrending(timeWindow).then((res)=>{
       setData(res)
       setLoading(false)
     }).catch(err=>console.log(err))
-  }, [])
+  }, [timeWindow])
 
   console.log(data)
 
