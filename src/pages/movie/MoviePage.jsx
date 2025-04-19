@@ -2,7 +2,6 @@
 function MoviePage() {
   return (
     <div>
-      
     </div>
   )
 }
