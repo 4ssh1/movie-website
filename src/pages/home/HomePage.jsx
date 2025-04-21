@@ -35,7 +35,8 @@ function HomePage() {
             ))          
           :
           data && data?.map((item)=>(
-            <Cards  src={`${imagePath}/${item?.poster_path}`} key={item.id} alt={item?.name || item?.title}/>
+            <Cards  src={`${imagePath}/${item?.poster_path}`} key={item.id} 
+            alt={item?.name || item?.title} type={item?.media_type} id={item?.id}/>
           ))}
         </div>
         <PaginationBtn />

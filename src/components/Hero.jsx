@@ -30,10 +30,10 @@ function Hero() {
      relative mt-5 rounded-lg overflow-hidden">
       <div
         className={`w-full sm:h-[50vh] h-[30vh] bg-cover bg-center transition-all duration-1000 ease-in-out absolute ${
-          movie ? `url[${imagePath}/${movie?.backdrop_path}]` : "bg-slate-300 animate-pulse rounded overflow-hidden shadow-lg"
+          movie ? `` : "bg-slate-300 animate-pulse rounded overflow-hidden shadow-lg"
         }`}
         style={{
-          background: movie ? `url(${imagePath}/${movie?.backdrop_path})` : "bg-slate-300 animate-pulse rounded overflow-hidden shadow-lg",
+          background: movie ? `url(${imagePath}/${movie?.backdrop_path})` : "",
         }}
       ></div>
 
