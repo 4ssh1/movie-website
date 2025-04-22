@@ -64,14 +64,15 @@ function Details() {
           :
 
           data && 
-            <div className=" relative h-[60vh] text-white ">
+            <div className=" relative h-[70vh] text-white ">
               <div style={{
                 backgroundImage: data 
                 ? `url(${imagePath}/${data?.backdrop_path})`
                 : "",
-              }} className={`w-full top-0 h-[59vh] bg-no-repeat left-0 bg-center px-5 bg-cover absolute`}></div>
+              }} className={`w-full top-0 h-[69vh] bg-no-repeat left-0 bg-center px-5 bg-cover absolute`}></div>
+              <div className="absolute top-0 left-0 bg-slate-900 opacity-50 w-full h-full"></div>
 
-                  <div className="flex backdrop-blur-xs w-full h-[60vh]">
+                  <div className="flex backdrop-blur-xs w-full h-[70vh]">
                       <div className="w-1/3 pt-1 h-full pl-3 flex justify-center items-center">
                         <img src={`${imagePath}/${data?.poster_path}`} alt="" width={200}/>
                       </div>
