@@ -33,7 +33,7 @@ function Hero() {
           movie ? `` : "bg-slate-300 animate-pulse rounded overflow-hidden shadow-lg"
         }`}
         style={{
-          background: movie ? `url(${imagePath}/${movie?.backdrop_path})` : "",
+          backgroundImage: movie ? `url(${imagePath}/${movie?.backdrop_path})` : "",
         }}
       ></div>
 

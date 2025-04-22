@@ -9,10 +9,10 @@ function Footer() {
         <div className='backdrop-blur-[4px] h-full flex flex-col justify-center items-center sm:gap-2 gap-1'>
             {[0,3,6,9].map((no)=>(
             <div key={no} className="text-white
-               leading-10 roboto text-xs tracking-wider sm:space-x-10 space-x-4">
+               sm:leading-10 leading-7 roboto  tracking-wider sm:space-x-10 space-x-4">
                 {links.slice(no, no + 3).map((link)=>(
                     <Link to={'/'} key={link} className=' bg-slate-800 cursor-pointer sm:px-4 px-2.5 
-                    py-2 rounded-full hover:opacity-60 ease-in'
+                    py-2 rounded-full hover:opacity-60 ease-in sm:text-xs text-[7px]'
                     >{link}</Link>
                 ))}
             </div>
