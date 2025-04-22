@@ -4,7 +4,7 @@ const links = ["Home", "Contact us", "Terms of Service", "Live", "FAQ", "Premium
 
 function Footer() {
   return (
-    <div className="relative sm:h-[40vh] h-[30vh] bg-[url('/collage.jpg')]">
+    <div className="relative sm:h-[40vh] h-[20vh] bg-[url('/collage.jpg')]">
         <div className="absolute bg-slate-800 -z-10  w-full h-full"></div>
         <div className='backdrop-blur-[4px] h-full flex flex-col justify-center items-center sm:gap-2 gap-1'>
             {[0,3,6,9].map((no)=>(
