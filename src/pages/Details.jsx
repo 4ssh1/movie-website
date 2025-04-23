@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
-import { fetchDetails, imagePath, fetchCredits } from "../api/api"
+import { fetchDetails, imagePath, fetchCredits, fetchVideos } from "../api/api"
 import Profile from "../components/Profile";
 
 import { CircularProgress, Box, Typography } from '@mui/material';
@@ -44,15 +44,21 @@ function Details() {
   const [error, setError] = useState(false)
   const [data, setData] = useState([])
   const [credits, setCredits] = useState([])
+  const [videos, setVideos] = useState([])
+  const [trailer, setTrailer] = useState(null)
 
   useEffect(()=>{ 
     const controller = new AbortController()
     Promise.all([
       fetchDetails(type, id, controller.signal),
       fetchCredits(type, id, controller.signal),
-    ]).then(([detailsRes, creditsRes])=>{
+      fetchVideos(type, id, controller.signal)
+    ]).then(([detailsRes, creditsRes, videosRes])=>{
       setData(detailsRes)
-      setCredits(creditsRes?.cast)
+      setCredits(creditsRes?.cast?.slice(0, 7))
+      setVideos(videosRes?.results)
+      const trailer = videosRes?.results?.find(video=> video?.type === "Trailer")
+      setTrailer(trailer)
       setLoading(false)
     }).catch(err =>{
       if(err.name !== 'AbprtError'){
@@ -63,7 +69,7 @@ function Details() {
     return ()=> controller.abort()
   }, [])
   
-  console.log(data, credits)
+  console.log(videos)
 
   // useEffect(()=>{
   //   if(loading){
@@ -114,58 +120,64 @@ function Details() {
           :
 
           data && 
-            <div className=" relative sm:h-[70vh] h-[45vh] text-white ">
-              <div style={{
-                backgroundImage: data 
-                ? `url(${imagePath}/${data?.backdrop_path})`
-                : "",
-              }} className={`w-full top-0 sm:h-[69vh] h-[45vh] bg-no-repeat left-0 bg-center px-5 bg-cover absolute`}></div>
-              <div className="absolute top-0 left-0 bg-slate-900 opacity-50 w-full sm:h-[69vh] h-full"></div>
-
-                  <div className="flex backdrop-blur-xs w-full sm:h-[69vh] h-[45vh] gap-5">
-                      <div className="w-1/3 pt-1 h-full pl-3 flex justify-center items-center">
-                        <img src={`${imagePath}/${data?.poster_path}`} alt="" className="w-[150px] sm:w-[250px]"/>
-                      </div>
-                      <div className="flex flex-col justify-center w-2/3 sm:gap-3 gap-1.5 sm:pr-10 ">
-                          <p className="paytone sm:text-3xl text-[16px]">{data?.original_title || data?.original_name} 
-                            <span className="lato pl-5 "> ( {new Date(data?.release_date || data?.last_air_date).getFullYear()} )</span>
-                          </p>
-                          <div>
-                              <span className="text-xs sm:text-sm"> {new Date(data?.release_date || data?.last_air_date)?.toLocaleDateString()} </span>
-                              <span className="sm:text-sm text-xs bg-white text-black text-center sm:p-1 p-0.5 ml-3 rounded-md">  {data?.origin_country} </span>
-                              <span className="bg-black sm:p-1 p-0.5 ml-3 rounded-md sm:text-sm text-xs"> {data?.original_language?.toUpperCase()} </span>                           
-                              <h3 className="paytone sm:text-2xl  sm:leading-10 leading-7">Overview</h3>
-                              <p className="sm:text-md text-[10px] tracking-wider line-clamp-6 sm:leading-7">{data?.overview}</p>
-                          </div>
-                          <div className="flex ">
-                            <CircularRating value={(data?.vote_average * 10).toFixed(0)} />
-                            <button className="inline-block sm:ml-10 ml-5 text-center border-[1px] p-2 sm:text-sm text-[9px]  mb-5"><span> ➕ </span> Add to WatchList</button> 
-                          </div>
-                          <p>
-                            {data?.genres?.map(genre=>(
-                              <button key={genre.id} className="border-[1px] ml-2 text-[9px] sm:text-sm rounded-full px-2 py-0.5 mb-1 lato cursor-none hover:bg-slate-900">
-                                {genre.name}</button>
-                            ))}
-                          </p> 
-                          <span className="sm:text-sm text-white font-black hover:bg-slate-700 ease-in-out cursor-none
-                           inline-block w-fit px-2 rounded-md border-[1px] backdrop-blur-md text-[9px]">{data?.status}</span>
-                      </div>
-                  </div>
-              
+            <div>
+              <div className="sm:h-[70vh] h-[45vh] text-white relative">
+                <div style={{
+                  backgroundImage: data
+                  ? `url(${imagePath}/${data?.backdrop_path})`
+                  : "",
+                }} className={`w-full top-0 sm:h-[69vh] h-[45vh] bg-no-repeat left-0 bg-center px-5 bg-cover absolute`}></div>
+                <div className="absolute top-0 left-0 bg-slate-900 opacity-50 w-full sm:h-[69vh] h-full"></div>
+                    <div className="flex backdrop-blur-xs w-full sm:h-[69vh] h-[45vh] gap-5">
+                        <div className="w-1/3 pt-1 h-full pl-3 flex justify-center items-center">
+                          <img src={`${imagePath}/${data?.poster_path}`} alt="" className="w-[150px] sm:w-[250px]"/>
+                        </div>
+                        <div className="flex flex-col justify-center w-2/3 sm:gap-3 gap-1.5 sm:pr-10 ">
+                            <p className="paytone sm:text-3xl text-[16px]">{data?.original_title || data?.original_name}
+                              <span className="lato pl-5 "> ( {new Date(data?.release_date || data?.last_air_date).getFullYear()} )</span>
+                            </p>
+                            <div>
+                                <span className="text-xs sm:text-sm"> {new Date(data?.release_date || data?.last_air_date)?.toLocaleDateString()} </span>
+                                <span className="sm:text-sm text-xs bg-white text-black text-center sm:p-1 p-0.5 ml-3 rounded-md">  {data?.origin_country} </span>
+                                <span className="bg-black sm:p-1 p-0.5 ml-3 rounded-md sm:text-sm text-xs"> {data?.original_language?.toUpperCase()} </span>
+                                <h3 className="paytone sm:text-2xl  sm:leading-10 leading-7">Overview</h3>
+                                <p className="sm:text-sm text-[10px] tracking-wider line-clamp-6 sm:leading-7">{data?.overview}</p>
+                            </div>
+                            <div className="flex ">
+                              <CircularRating value={(data?.vote_average * 10).toFixed(0)} />
+                              <button className="inline-block sm:ml-10 ml-5 text-center border-[1px] p-2 sm:text-sm text-[9px]  mb-5"><span> ➕ </span> Add to WatchList</button>
+                            </div>
+                            <p>
+                              {data?.genres?.map(genre=>(
+                                <button key={genre.id} className="border-[1px] ml-2 text-[9px] sm:text-sm rounded-full px-2 py-0.5 mb-1 lato cursor-none hover:bg-slate-900">
+                                  {genre.name}</button>
+                              ))}
+                            </p>
+                            <span className="sm:text-sm text-white font-black hover:bg-slate-700 ease-in-out cursor-none
+                             inline-block w-fit px-2 rounded-md border-[1px] backdrop-blur-md text-[9px]">{data?.status}</span>
+                        </div>
+                    </div>
+                
+              </div>
               {/* year, age, limited series, spatial audio, chat , number of episodes */}
-          </div>
-        }
-
-        <div className="flex sm:gap-10 gap-3 justify-center items-center">
-          {credits && credits?.map(credit=>(
-            <div key={credit?.id} className="text-center">
-              <Profile src={credit?.profile_path}/>
-              <p className="sm:text-xs text-[7px] pt-2 lato">{credit.name} </p>
-              <p className="sm:text-xs text-[7px] ">as <span className="font-medium">{credit.character}</span></p>
+                  <div>
+                    <h3 className="text-center my-5 font-bold text-lg">CAST</h3>
+                    <div className="flex sm:gap-10 gap-3 justify-center items-center">
+                      {credits && credits?.map(credit=>(
+                        <div key={credit?.id} className="text-center">
+                          <Profile src={credit?.profile_path}/>
+                          <p className="sm:text-xs text-[7px] pt-2 lato">{credit.name} </p>
+                          <p className="sm:text-xs text-[7px] ">as <span className="font-medium">{credit.character}</span></p>
+                        </div>
+                      ))}
+                    </div>
+                    <h3 className="my-8 text-center font-bold">VIDEOS</h3>
+                    {videos?.filter(video=> video?.type !== "Trailer")?.slice(0, 10)}
+                  </div>
             </div>
-          ))}
-        </div>
-    </div>
+
+        }
+              </div>
   )
 }
 

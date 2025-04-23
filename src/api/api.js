@@ -20,3 +20,8 @@ export async function fetchCredits(type, id, signal) {
     // console.log(res)
     return res?.data
 }
+
+export async function fetchVideos(type, id, signal){
+    const res = await axios.get(`${baseUrl}/${type}/${id}/videos?api_key=${apiKey}`, signal)
+    return res?.data
+}
