@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { fetchDetails, imagePath, fetchCredits, fetchVideos } from "../api/api"
 import Profile from "../components/Profile";
+import { FaRegClock } from "react-icons/fa";
 
 import { CircularProgress, Box, Typography } from '@mui/material';
 import VideoComponent from "../components/VideoComponent";
@@ -40,6 +41,7 @@ function CircularRating({ value }) {
 function Details() {
   const router = useParams()
   const {id, type} = router
+  const clock = <FaRegClock />
 
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
@@ -70,7 +72,7 @@ function Details() {
     return ()=> controller.abort()
   }, [])
   
-  console.log(videos, trailer)
+  console.log(videos, trailer, data)
 
   // useEffect(()=>{
   //   if(loading){
@@ -122,14 +124,14 @@ function Details() {
 
           data && 
             <div>
-              <div className="sm:h-[70vh] h-[45vh] text-white relative">
+              <div className="sm:h-[70vh] h-[50vh] text-white relative">
                 <div style={{
                   backgroundImage: data
                   ? `url(${imagePath}/${data?.backdrop_path})`
                   : "",
-                }} className={`w-full top-0 sm:h-[69vh] h-[45vh] bg-no-repeat left-0 bg-center px-5 bg-cover absolute`}></div>
+                }} className={`w-full top-0 sm:h-[69vh] h-[50vh] bg-no-repeat left-0 bg-center px-5 bg-cover absolute`}></div>
                 <div className="absolute top-0 left-0 bg-slate-900 opacity-50 w-full sm:h-[69vh] h-full"></div>
-                    <div className="flex backdrop-blur-xs w-full sm:h-[69vh] h-[45vh] gap-5">
+                    <div className="flex backdrop-blur-xs w-full sm:h-[69vh] h-[50vh] gap-5">
                         <div className="w-1/3 pt-1 h-full pl-3 flex justify-center items-center">
                           <img src={`${imagePath}/${data?.poster_path}`} alt="" className="w-[150px] sm:w-[250px]"/>
                         </div>
@@ -144,8 +146,11 @@ function Details() {
                                   {new Date(data?.release_date || data?.last_air_date)?.toLocaleDateString()} </span>
                                 <span className="sm:text-sm text-xs bg-white text-black text-center sm:p-1 p-0.5 ml-3 rounded-md"> 
                                    {data?.origin_country} </span>
-                                <span className="bg-black sm:p-1 p-0.5 ml-3 rounded-md sm:text-sm text-xs">
-                                   {data?.original_language?.toUpperCase()} </span>
+                                <span className="flex items-center gap-4">
+                                {/* data?.number_of_seasons} seasons` || data?.runtime} */}
+                                  {clock }{`${type === "movie" ? (data?.runtime / 60).toFixed(1) + "hours" :
+                                     data?.number_of_seasons + "seasons"}`} 
+                                </span>
                                 <h3 className="paytone sm:text-2xl  sm:leading-10 leading-7">Overview</h3>
                                 <p className="sm:text-sm text-[10px] tracking-wider line-clamp-6 sm:leading-7">{data?.overview}</p>
                             </div>
