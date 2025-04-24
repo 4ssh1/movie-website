@@ -169,17 +169,17 @@ function Details() {
               </div>
               {/* year, age, limited series, spatial audio, chat , number of episodes */}
                   <div>
-                    <h3 className="text-center my-5 font-bold text-lg">CAST</h3>
-                    <div className="flex sm:gap-10 gap-3 justify-center items-center">
+                    <h3 className="text-center sm:my-5 my-2 font-bold text-lg">CAST</h3>
+                    <div className="flex sm:gap-10 gap-3 sm:justify-center items-center overflow-x-scroll hide-scrollbar">
                       {credits && credits?.map(credit=>(
                         <div key={credit?.id} className="text-center">
                           <Profile src={credit?.profile_path}/>
-                          <p className="sm:text-xs text-[7px] pt-2 lato">{credit.name} </p>
-                          <p className="sm:text-xs text-[7px] ">as <span className="font-medium">{credit.character}</span></p>
+                          <p className="sm:text-xs text-[5px] pt-2 lato">{credit.name} </p>
+                          <p className="sm:text-xs text-[5px] ">as <span className="font-medium">{credit.character}</span></p>
                         </div>
                       ))}
                     </div>
-                    <h3 className="my-8 text-center font-bold">VIDEOS</h3>
+                    <h3 className="sm:my-8 my-3 text-center font-bold">VIDEOS</h3>
                     <VideoComponent id={trailer?.key} title={trailer?.name} height={'h-[200px] sm:h-[500px]'}/>
                     <div className="my-8 flex gap-6 overflow-x-scroll hide-scrollbar w-full">
                       {videos && videos?.map(video=>(
