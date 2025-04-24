@@ -4,6 +4,7 @@ import { fetchDetails, imagePath, fetchCredits, fetchVideos } from "../api/api"
 import Profile from "../components/Profile";
 
 import { CircularProgress, Box, Typography } from '@mui/material';
+import VideoComponent from "../components/VideoComponent";
 
 function CircularRating({ value }) {
   return (
@@ -56,12 +57,12 @@ function Details() {
     ]).then(([detailsRes, creditsRes, videosRes])=>{
       setData(detailsRes)
       setCredits(creditsRes?.cast?.slice(0, 7))
-      setVideos(videosRes?.results)
+      setVideos(videosRes?.results?.filter(videos => videos !== "Trailer")?.slice(0, 10))
       const trailer = videosRes?.results?.find(video=> video?.type === "Trailer")
       setTrailer(trailer)
       setLoading(false)
     }).catch(err =>{
-      if(err.name !== 'AbprtError'){
+      if(err.name !== 'AbortError'){
         console.error(err)
       }
     })
@@ -69,7 +70,7 @@ function Details() {
     return ()=> controller.abort()
   }, [])
   
-  console.log(videos)
+  console.log(videos, trailer)
 
   // useEffect(()=>{
   //   if(loading){
@@ -134,22 +135,29 @@ function Details() {
                         </div>
                         <div className="flex flex-col justify-center w-2/3 sm:gap-3 gap-1.5 sm:pr-10 ">
                             <p className="paytone sm:text-3xl text-[16px]">{data?.original_title || data?.original_name}
-                              <span className="lato pl-5 "> ( {new Date(data?.release_date || data?.last_air_date).getFullYear()} )</span>
+                              <span className="lato pl-5 "> 
+                                ( {new Date(data?.release_date || data?.last_air_date).getFullYear()} )
+                              </span>
                             </p>
                             <div>
-                                <span className="text-xs sm:text-sm"> {new Date(data?.release_date || data?.last_air_date)?.toLocaleDateString()} </span>
-                                <span className="sm:text-sm text-xs bg-white text-black text-center sm:p-1 p-0.5 ml-3 rounded-md">  {data?.origin_country} </span>
-                                <span className="bg-black sm:p-1 p-0.5 ml-3 rounded-md sm:text-sm text-xs"> {data?.original_language?.toUpperCase()} </span>
+                                <span className="text-xs sm:text-sm"> 
+                                  {new Date(data?.release_date || data?.last_air_date)?.toLocaleDateString()} </span>
+                                <span className="sm:text-sm text-xs bg-white text-black text-center sm:p-1 p-0.5 ml-3 rounded-md"> 
+                                   {data?.origin_country} </span>
+                                <span className="bg-black sm:p-1 p-0.5 ml-3 rounded-md sm:text-sm text-xs">
+                                   {data?.original_language?.toUpperCase()} </span>
                                 <h3 className="paytone sm:text-2xl  sm:leading-10 leading-7">Overview</h3>
                                 <p className="sm:text-sm text-[10px] tracking-wider line-clamp-6 sm:leading-7">{data?.overview}</p>
                             </div>
                             <div className="flex ">
                               <CircularRating value={(data?.vote_average * 10).toFixed(0)} />
-                              <button className="inline-block sm:ml-10 ml-5 text-center border-[1px] p-2 sm:text-sm text-[9px]  mb-5"><span> ➕ </span> Add to WatchList</button>
+                              <button className="inline-block sm:ml-10 ml-5 text-center border-[1px] 
+                              p-2 sm:text-sm text-[9px] mb-5"><span> ➕ </span> Add to WatchList</button>
                             </div>
                             <p>
                               {data?.genres?.map(genre=>(
-                                <button key={genre.id} className="border-[1px] ml-2 text-[9px] sm:text-sm rounded-full px-2 py-0.5 mb-1 lato cursor-none hover:bg-slate-900">
+                                <button key={genre.id} className="border-[1px] ml-2 text-[9px] sm:text-sm rounded-full 
+                                px-2 py-0.5 mb-1 lato cursor-none hover:bg-slate-900">
                                   {genre.name}</button>
                               ))}
                             </p>
@@ -172,7 +180,16 @@ function Details() {
                       ))}
                     </div>
                     <h3 className="my-8 text-center font-bold">VIDEOS</h3>
-                    {videos?.filter(video=> video?.type !== "Trailer")?.slice(0, 10)}
+                    <VideoComponent id={trailer?.key} title={trailer?.name} height={'h-[200px] sm:h-[500px]'}/>
+                    <div className="my-8 flex gap-6 overflow-x-scroll hide-scrollbar w-full">
+                      {videos && videos?.map(video=>(
+                        <div key={video?.id} className="flex-shrink-0 ">
+                          <VideoComponent id={video?.key} title={video?.name} height={'h-[200px]'}/>
+                          <p className="text-xs font-black roboto text-center my-1">{video?.name}</p>
+                        </div>
+                        
+                      ))}
+                    </div>
                   </div>
             </div>
 
