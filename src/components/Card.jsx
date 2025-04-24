@@ -8,7 +8,7 @@ function Cards({src, alt, type, id}) {
   const isDark = theme.palette.mode === "dark"
 
   return (
-    <Link to={`${type}/${id}`}>
+    <Link to={`/${type}/${id}`}>
       <div className='w-[135px]'>
           <div className='relative w-[135px]'>
             <Card sx={{

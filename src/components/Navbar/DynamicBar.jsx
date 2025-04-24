@@ -48,7 +48,7 @@ const tvShowsSection = {
         </div>
       )}
 
-      {currentPath === "/movie" && (
+      {currentPath === "/movies" && (
         <div className="mb-4">
           <div className="font-bold text-2xl">{movieSection.title.toUpperCase()}</div>
           <div>
@@ -64,7 +64,7 @@ const tvShowsSection = {
         </div>
       )}
 
-      {currentPath === "/tv" && (
+      {currentPath === "/shows" && (
         <div className="mb-4">
           <div className="font-bold text-2xl"
           >{tvShowsSection.title.toUpperCase()}</div>

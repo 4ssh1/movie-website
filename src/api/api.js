@@ -27,8 +27,8 @@ export async function fetchVideos(type, id, signal){
 }
 
 export async function fetchDiscover(type){
-    const res = await axios.get(`${baseUrl}/discover/${type}?api_ket=${apiKey}`, signal)
-    return res?.results
+    const res = await axios.get(`${baseUrl}/discover/${type}?api_key=${apiKey}`)
+    return res?.data
 }
 
 // https://api.themoviedb.org/3/discover/movie

@@ -4,8 +4,8 @@ import TvShowsPage from "../pages/shows/TvShowsPage";
 
 const mainRoutes = [
   { path: "/", element: <HomePage /> },
-  { path: "/movie", element: <MoviePage /> },
-  { path: "/tv", element: <TvShowsPage /> },
+  { path: "/movies", element: <MoviePage /> },
+  { path: "/shows", element: <TvShowsPage /> },
 ];
 
 export default mainRoutes;

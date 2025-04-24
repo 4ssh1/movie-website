@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
-import { fetchDetails, imagePath, fetchCredits, fetchVideos } from "../api/api"
+import { fetchDetails, imagePath, fetchCredits, fetchVideos} from "../api/api"
 import Profile from "../components/Profile";
 import { FaRegClock } from "react-icons/fa";
 
