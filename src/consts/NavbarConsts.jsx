@@ -8,11 +8,11 @@ export  const Menu = [
       },
       {
         title: "Movies",
-        path: "/movies",
+        path: "/movie",
       },
       {
         title: "TV Shows",
-        path: "/shows",
+        path: "/tv",
       },
   ]
 

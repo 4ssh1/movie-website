@@ -25,3 +25,12 @@ export async function fetchVideos(type, id, signal){
     const res = await axios.get(`${baseUrl}/${type}/${id}/videos?api_key=${apiKey}`, signal)
     return res?.data
 }
+
+export async function fetchDiscover(type){
+    const res = await axios.get(`${baseUrl}/discover/${type}?api_ket=${apiKey}`, signal)
+    return res?.results
+}
+
+// https://api.themoviedb.org/3/discover/movie
+// https://api.themoviedb.org/3/discover/tv
+

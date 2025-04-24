@@ -48,8 +48,8 @@ const tvShowsSection = {
         </div>
       )}
 
-      {currentPath === "/movies" && (
-        <div>
+      {currentPath === "/movie" && (
+        <div className="mb-4">
           <div className="font-bold text-2xl">{movieSection.title.toUpperCase()}</div>
           <div>
             <select value={selectedMovies} onChange={(e) => setSelectedMovies(e.target.value)}
@@ -64,8 +64,8 @@ const tvShowsSection = {
         </div>
       )}
 
-      {currentPath === "/shows" && (
-        <div>
+      {currentPath === "/tv" && (
+        <div className="mb-4">
           <div className="font-bold text-2xl"
           >{tvShowsSection.title.toUpperCase()}</div>
           <div>
