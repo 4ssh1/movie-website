@@ -9,14 +9,34 @@ const homeSection = {
         ]
     }
 
+  //   <select onChange={(e) => setSort(e.target.value)}>
+  //   <option value="popularity.desc">Popularity</option>
+  //   <option value="vote_average.desc">Top Rated</option>
+  //   <option value="release_date.desc">Newest</option>
+  // </select>
+
 const movieSection = {
         title:  "discover movies",
-        buttons: ["Popular", "Top Rated"]
+        buttons: [
+          {name: "Popular",
+          value:"popularity.desc"
+          },
+          {name: "Popular",
+          value:"vote_average.desc"
+          },   
+        ]
     }
 
 const tvShowsSection = {
         title: 'discover tv shows',
-        buttons: ["Popular", "Top Rated"]
+        buttons: [
+          {name: "Popular",
+          value:"popularity.desc"
+          },
+          {name: "Popular",
+          value:"vote_average.desc"
+          },   
+        ]
     }
     
     function DynamicBar() {
@@ -52,11 +72,12 @@ const tvShowsSection = {
         <div className="mb-4">
           <div className="font-bold text-2xl">{movieSection.title.toUpperCase()}</div>
           <div>
-            <select value={selectedMovies} onChange={(e) => setSelectedMovies(e.target.value)}
+            <select value={selectedMovies} 
+            onChange={(e) => {setSelectedMovies(e.target.value); setimeWindow(e.target.value)}}
               className="border-[1px] rounded-2xl px-1 py-1 outline-0 text-sm font-medium mt-3">
               {movieSection.buttons.map(btn => (
-                <option key={btn} value={btn}>
-                  {btn}
+                <option key={btn} value={btn.value}>
+                  {btn.name}
                 </option>
               ))}
             </select>
@@ -69,7 +90,8 @@ const tvShowsSection = {
           <div className="font-bold text-2xl"
           >{tvShowsSection.title.toUpperCase()}</div>
           <div>
-            <select value={selectedShows} onChange={(e) => setSelectedShows(e.target.value)}
+            <select value={selectedShows} 
+            onChange={(e) => {setSelectedShows(e.target.value); setimeWindow(e.target.value)}}
               className="border-[1px] rounded-2xl px-1 py-1 outline-0 text-sm font-medium mt-3">
               {tvShowsSection.buttons.map(btn => (
                 <option key={btn} value={btn}>

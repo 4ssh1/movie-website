@@ -146,10 +146,11 @@ function Details() {
                                   {new Date(data?.release_date || data?.last_air_date)?.toLocaleDateString()} </span>
                                 <span className="sm:text-sm text-xs bg-white text-black text-center sm:p-1 p-0.5 ml-3 rounded-md"> 
                                    {data?.origin_country} </span>
-                                <span className="flex items-center gap-4">
+                                <span className="flex items-center gap-4 pt-0.5">
                                 {/* data?.number_of_seasons} seasons` || data?.runtime} */}
-                                  {clock }{`${type === "movie" ? (data?.runtime / 60).toFixed(1) + "hours" :
-                                     data?.number_of_seasons + " seasons"}`} 
+                                  {clock }{`${type === "movie" ? (data?.runtime / 60).toFixed(1) + " hours" :
+                                     data?.number_of_seasons + " seasons"}`
+                                     } 
                                 </span>
                                 <h3 className="paytone sm:text-2xl  sm:leading-10 leading-7">Overview</h3>
                                 <p className="sm:text-sm text-[10px] tracking-wider line-clamp-6 sm:leading-7">{data?.overview}</p>

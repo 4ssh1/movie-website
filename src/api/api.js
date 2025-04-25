@@ -2,6 +2,10 @@ import axios from "axios";
 
 const apiKey = import.meta.env.VITE_API_KEY
 const baseUrl = "https://api.themoviedb.org/3"
+
+  
+// const url = `${baseUrl}/discover/movie?${params.toString()}`;
+
 export const imagePath = "https://image.tmdb.org/t/p/w500"
 export const imagePathOriginal = "https://image.tmdb.org/t/p/original"
 
@@ -17,7 +21,6 @@ export const fetchDetails = async (type, id, signal) => {
 
 export async function fetchCredits(type, id, signal) {
     const res = await axios.get(`${baseUrl}/${type}/${id}/credits?api_key=${apiKey}`, {signal})
-    // console.log(res)
     return res?.data
 }
 
@@ -26,11 +29,16 @@ export async function fetchVideos(type, id, signal){
     return res?.data
 }
 
-export async function fetchDiscover(type){
+export async function fetchDiscover(type, ){
+    const params = new URLSearchParams({
+        api_key: apiKey,
+        sort_by,
+        page
+    });
     const res = await axios.get(`${baseUrl}/discover/${type}?api_key=${apiKey}`)
     return res?.data
 }
 
-// https://api.themoviedb.org/3/discover/movie
-// https://api.themoviedb.org/3/discover/tv
 
+
+  
