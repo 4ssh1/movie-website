@@ -29,13 +29,13 @@ export async function fetchVideos(type, id, signal){
     return res?.data
 }
 
-export async function fetchDiscover(type, ){
+export async function fetchDiscover(type, {page = 1, sort_by = 'popularity.desc'}={}){
     const params = new URLSearchParams({
         api_key: apiKey,
         sort_by,
         page
     });
-    const res = await axios.get(`${baseUrl}/discover/${type}?api_key=${apiKey}`)
+    const res = await axios.get(`${baseUrl}/discover/${type}?${params.toString()}`)
     return res?.data
 }
 

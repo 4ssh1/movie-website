@@ -2,20 +2,28 @@ import { useState, useEffect } from "react"
 import MovieHero from "../../components/movie/MovieHero"
 import {  fetchDiscover, imagePath } from "../../api/api"
 import Cards from "../../components/Card"
+import { usePages } from "../../../utilities/PaginationCxtProv"
+import PaginationBtn from "../../consts/PaginationBtn"
 
 function MoviePage() {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
+  const [page, setPage] = useState(1)
   const skeletonArray = new Array(10).fill(0)
+  const {timeWindow} = usePages()
+  const noImage = "noImage.jpg" 
+
 
   useEffect(()=>{
-    fetchDiscover("movie").then(res=>{
+    fetchDiscover("movie", {page, sort_by: timeWindow}).then(res=>{
       setData(res?.results)
       setLoading(false)
     }).catch(err=>{
       console.log(err)
     })
-  }, [])
+  }, [page, timeWindow])
+
+  console.log(data)
 
   return (
     <div>
@@ -29,10 +37,11 @@ function MoviePage() {
             ))          
           :
           data && data?.map((item)=>(
-            <Cards  src={`${imagePath}/${item?.poster_path}`} key={item.id} 
+            <Cards  src={!item?.poster_path ? noImage : `${imagePath}${item?.poster_path}}`} key={item.id} 
             alt={item?.name || item?.title} type={"movie"} id={item?.id}/>
           ))}
         </div>
+        <PaginationBtn />
     </div>
   )
 }

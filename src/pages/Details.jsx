@@ -72,7 +72,7 @@ function Details() {
     return ()=> controller.abort()
   }, [])
   
-  console.log(videos, trailer, data)
+  console.log(videos, trailer, data, credits)
 
   // useEffect(()=>{
   //   if(loading){

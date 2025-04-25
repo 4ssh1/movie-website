@@ -21,7 +21,7 @@ const movieSection = {
           {name: "Popular",
           value:"popularity.desc"
           },
-          {name: "Popular",
+          {name: "Top rated",
           value:"vote_average.desc"
           },   
         ]
@@ -33,7 +33,7 @@ const tvShowsSection = {
           {name: "Popular",
           value:"popularity.desc"
           },
-          {name: "Popular",
+          {name: "Top rated",
           value:"vote_average.desc"
           },   
         ]
@@ -76,7 +76,7 @@ const tvShowsSection = {
             onChange={(e) => {setSelectedMovies(e.target.value); setimeWindow(e.target.value)}}
               className="border-[1px] rounded-2xl px-1 py-1 outline-0 text-sm font-medium mt-3">
               {movieSection.buttons.map(btn => (
-                <option key={btn} value={btn.value}>
+                <option key={btn.name} value={btn.value}>
                   {btn.name}
                 </option>
               ))}
@@ -94,8 +94,8 @@ const tvShowsSection = {
             onChange={(e) => {setSelectedShows(e.target.value); setimeWindow(e.target.value)}}
               className="border-[1px] rounded-2xl px-1 py-1 outline-0 text-sm font-medium mt-3">
               {tvShowsSection.buttons.map(btn => (
-                <option key={btn} value={btn}>
-                  {btn}
+                <option key={btn.name} value={btn.value}>
+                  {btn.name}
                 </option>
               ))}
             </select>

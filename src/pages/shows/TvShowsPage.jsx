@@ -2,14 +2,19 @@ import { useState, useEffect } from "react"
 import {  fetchDiscover, imagePath } from "../../api/api"
 import Cards from "../../components/Card"
 import ShowsHero from "../../components/shows/showsHero"
+import PaginationBtn from "../../consts/PaginationBtn"
+import { usePages } from "../../../utilities/PaginationCxtProv"
+
 
 function TvShowsPage() {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
+  const [page, setPage] = useState(1)
   const skeletonArray = new Array(10).fill(0)
+  const {timeWindow} = usePages()
 
   useEffect(()=>{
-    fetchDiscover("tv").then(res=>{
+    fetchDiscover("tv", {page, sort_by: timeWindow}).then(res=>{
       setData(res?.results)
       setLoading(false)
     }).catch(err=>{
@@ -33,6 +38,7 @@ function TvShowsPage() {
             alt={item?.name || item?.title} type={"tv"} id={item?.id}/>
           ))}
         </div>
+        <PaginationBtn />
     </div>
   )
 }
