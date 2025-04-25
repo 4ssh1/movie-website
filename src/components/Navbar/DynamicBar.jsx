@@ -13,7 +13,7 @@ const homeSection = {
   //   <option value="popularity.desc">Popularity</option>
   //   <option value="vote_average.desc">Top Rated</option>
   //   <option value="release_date.desc">Newest</option>
-  // </select>
+  //   </select>
 
 const movieSection = {
         title:  "discover movies",
@@ -74,7 +74,7 @@ const tvShowsSection = {
           <div>
             <select value={selectedMovies} 
             onChange={(e) => {setSelectedMovies(e.target.value); setimeWindow(e.target.value)}}
-              className="border-[1px] rounded-2xl px-1 py-1 outline-0 text-sm font-medium mt-3">
+              className="border-[1px] rounded-2xl px-1 py-1 outline-0 text-sm font-medium mt-3 text-black">
               {movieSection.buttons.map(btn => (
                 <option key={btn.name} value={btn.value}>
                   {btn.name}
@@ -92,7 +92,7 @@ const tvShowsSection = {
           <div>
             <select value={selectedShows} 
             onChange={(e) => {setSelectedShows(e.target.value); setimeWindow(e.target.value)}}
-              className="border-[1px] rounded-2xl px-1 py-1 outline-0 text-sm font-medium mt-3">
+              className="border-[1px] rounded-2xl px-1 py-1 outline-0 text-sm font-medium mt-3 text-black">
               {tvShowsSection.buttons.map(btn => (
                 <option key={btn.name} value={btn.value}>
                   {btn.name}
