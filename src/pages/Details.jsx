@@ -131,11 +131,11 @@ function Details() {
                   : "",
                 }} className={`w-full top-0 sm:h-[69vh] h-[50vh] bg-no-repeat left-0 bg-center px-5 bg-cover absolute`}></div>
                 <div className="absolute top-0 left-0 bg-slate-900 opacity-50 w-full sm:h-[69vh] h-full"></div>
-                    <div className="flex backdrop-blur-xs w-full sm:h-[69vh] h-[50vh] gap-5">
-                        <div className="w-1/3 pt-1 h-full pl-3 flex justify-center items-center">
-                          <img src={`${imagePath}/${data?.poster_path}`} alt="" className="w-[150px] sm:w-[250px]"/>
+                    <div className="flex backdrop-blur-xs w-full sm:h-[69vh] h-[50vh] sm:gap-5 pr-2.5 sm:pr-0 ">
+                        <div className="sm:w-1/3 w-15 pt-1 h-full pl-3 flex justify-center items-center">
+                          <img src={`${imagePath}/${data?.poster_path}`} alt="" className="w-0 sm:w-[250px]"/>
                         </div>
-                        <div className="flex flex-col justify-center w-2/3 sm:gap-3 gap-1.5 sm:pr-10 ">
+                        <div className="flex flex-col justify-center w-full sm:w-2/3 sm:gap-3 gap-2 sm:pr-10 ">
                             <p className="paytone sm:text-3xl text-[16px]">{data?.original_title || data?.original_name}
                               <span className="lato pl-5 "> 
                                 ( {new Date(data?.release_date || data?.last_air_date).getFullYear()} )
@@ -157,13 +157,13 @@ function Details() {
                             </div>
                             <div className="flex ">
                               <CircularRating value={(data?.vote_average * 10).toFixed(0)} />
-                              <button className="inline-block sm:ml-10 ml-5 text-center border-[1px] 
-                              p-2 sm:text-sm text-[9px] mb-5"><span> ➕ </span> Add to WatchList</button>
+                              <button className="inline-block sm:ml-10 ml-25 text-center border-[1px] 
+                              p-2 sm:text-sm text-[9px] mb-5 rounded-sm"><span> ➕ </span> Add to WatchList</button>
                             </div>
                             <p>
                               {data?.genres?.map(genre=>(
                                 <button key={genre.id} className="border-[1px] ml-2 text-[9px] sm:text-sm rounded-full 
-                                px-2 py-0.5 mb-1 lato cursor-none hover:bg-slate-900">
+                                px-2 py-0.5 mb-2 lato cursor-none hover:bg-slate-900">
                                   {genre.name}</button>
                               ))}
                             </p>

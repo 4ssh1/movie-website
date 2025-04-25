@@ -20,7 +20,9 @@ function TvShowsPage() {
     }).catch(err=>{
       console.log(err)
     })
-  }, [])
+  }, [page, timeWindow])
+
+  console.log(data)
 
   return (
     <div>
@@ -34,7 +36,7 @@ function TvShowsPage() {
             ))          
           :
           data && data?.map((item)=>(
-            <Cards  src={`${imagePath}/${item?.poster_path}`} key={item.id} 
+            <Cards  src={!item?.poster_path ? noImage : `${imagePath}${item?.poster_path}}`} key={item.id} 
             alt={item?.name || item?.title} type={"tv"} id={item?.id}/>
           ))}
         </div>
