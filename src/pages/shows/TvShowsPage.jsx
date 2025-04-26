@@ -18,8 +18,9 @@ function TvShowsPage() {
     fetchDiscover("tv", {page: count, sort_by: timeWindow}).then(res=>{
       setData(res?.results)
       setLoading(false)
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }).catch(err=>{
-      console.log(err)
+      console.log(err.message)
     })
   }, [count, timeWindow])
 
@@ -37,7 +38,7 @@ function TvShowsPage() {
             ))          
           :
           data && data?.map((item)=>(
-            <Cards  src={!item?.poster_path ? noImage : `${imagePath}${item?.poster_path}`} key={item.id} 
+            <Cards  src={!item?.poster_path ? noImage : `${imagePath}/${item?.poster_path?.replace(/^\/+/, '')}`} key={item.id} 
             alt={item?.name || item?.title} type={"tv"} id={item?.id}/>
           ))}
         </div>

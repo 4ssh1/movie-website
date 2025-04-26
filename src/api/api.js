@@ -6,10 +6,10 @@ const baseUrl = "https://api.themoviedb.org/3"
 export const imagePath = "https://image.tmdb.org/t/p/w500"
 export const imagePathOriginal = "https://image.tmdb.org/t/p/original"
 
-export async function fetchTrending(timeWindow = "day"){
-    const {data} = await axios.get(`${baseUrl}/trending/all/${timeWindow}?api_key=${apiKey}`)
+export async function fetchTrending(timeWindow = "day", page = 1){
+    const {data} = await axios.get(`${baseUrl}/trending/all/${timeWindow}?api_key=${apiKey}&page=${page}`)
     return data?.results
-}
+} 
 
 export const fetchDetails = async (type, id, signal) => {
     const res = await axios.get(`${baseUrl}/${type}/${id}?api_key=${apiKey}`, {signal})

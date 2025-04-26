@@ -8,18 +8,19 @@ import Hero from "../../components/Hero"
 function HomePage() {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
-  const {timeWindow} = usePages()
+  const {timeWindow, count} = usePages()
 
   
   const skeletonArray = new Array(10).fill(0)
 
 
   useEffect(()=>{
-    fetchTrending(timeWindow).then((res)=>{
+    fetchTrending(timeWindow, count).then((res)=>{
       setData(res)
       setLoading(false)
-    }).catch(err=>console.log(err))
-  }, [timeWindow])
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }).catch(err=>console.log(err.message))
+  }, [timeWindow, count])
 
   console.log(data)
 
@@ -35,7 +36,7 @@ function HomePage() {
             ))          
           :
           data && data?.map((item)=>(
-            <Cards  src={`${imagePath}/${item?.poster_path}`} key={item.id} 
+            <Cards  src={`${imagePath}/${item?.poster_path?.replace(/^\/+/, '')}`} key={item.id} 
             alt={item?.name || item?.title} type={item?.media_type} id={item?.id}/>
           ))}
         </div>
