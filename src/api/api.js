@@ -36,6 +36,16 @@ export async function fetchDiscover(type, {page = 1, sort_by = 'popularity.desc'
     return res?.data
 }
 
+export async function fetchSearch({query, page = 1}= {}){
+    const params = new URLSearchParams({
+       query,
+       api_key: apiKey,
+       page
+    })
+    const res = await axios.get(`${baseUrl}/search/multi?${params.toString()}`)
+    return res?.data
+}
+
 
 
   
