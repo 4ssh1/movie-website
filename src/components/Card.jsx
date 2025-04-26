@@ -19,7 +19,6 @@ function Cards({src, alt, type, id}) {
                 <CardMedia
                     sx={{
                       height: 200,
-                      objectFit: 'contain',
                     }}
                     image={src}
                     component="img"

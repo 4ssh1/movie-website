@@ -92,7 +92,7 @@ const tvShowsSection = {
           <div>
             <select value={selectedShows} 
             onChange={(e) => {setSelectedShows(e.target.value); setimeWindow(e.target.value)}}
-              className="border-[1px] rounded-2xl px-1 py-1 outline-0 text-sm font-medium mt-3 text-black">
+              className="border-[1px] rounded-2xl px-1 py-1 text-xs outline-0 sm:text-sm font-medium mt-3 text-black">
               {tvShowsSection.buttons.map(btn => (
                 <option key={btn.name} value={btn.value}>
                   {btn.name}

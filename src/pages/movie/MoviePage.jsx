@@ -10,18 +10,18 @@ function MoviePage() {
   const [loading, setLoading] = useState(true)
   const [page, setPage] = useState(1)
   const skeletonArray = new Array(10).fill(0)
-  const {timeWindow} = usePages()
+  const {timeWindow, count} = usePages()
   const noImage = "noImage.jpg" 
 
 
   useEffect(()=>{
-    fetchDiscover("movie", {page, sort_by: timeWindow}).then(res=>{
+    fetchDiscover("movie", {page: count, sort_by: timeWindow}).then(res=>{
       setData(res?.results)
       setLoading(false)
     }).catch(err=>{
       console.log(err)
     })
-  }, [page, timeWindow])
+  }, [count, timeWindow])
 
   console.log(data)
 
@@ -37,7 +37,7 @@ function MoviePage() {
             ))          
           :
           data && data?.map((item)=>(
-            <Cards  src={!item?.poster_path ? noImage : `${imagePath}${item?.poster_path}}`} key={item.id} 
+            <Cards  src={!item?.poster_path ? noImage : `${imagePath}${item?.poster_path}`} key={item.id} 
             alt={item?.name || item?.title} type={"movie"} id={item?.id}/>
           ))}
         </div>

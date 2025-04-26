@@ -4,7 +4,7 @@ import { useState, createContext, useContext } from "react"
 const PageContext = createContext()
 
 function PaginationCxtProv({children}) {
-    const [count, setCount] = useState(0)
+    const [count, setCount] = useState(1)
     const [timeWindow, setimeWindow] = useState('day')
 
   return (
