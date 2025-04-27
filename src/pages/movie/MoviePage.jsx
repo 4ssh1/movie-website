@@ -38,7 +38,7 @@ function MoviePage() {
             ))          
           :
           data && data?.map((item)=>(
-            <Cards  src={!item?.poster_path ? noImage : `${imagePath}${item?.poster_path?.replace(/^\/+/, '')}`} key={item.id} 
+            <Cards  src={!item?.poster_path ? noImage : `${imagePath}${item?.poster_path}`} key={item.id} 
             alt={item?.name || item?.title} type={"movie"} id={item?.id}/>
           ))}
         </div>

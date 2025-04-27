@@ -13,7 +13,7 @@ import ThemeButton from './ThemeButton'
         ))}
       </div>
         {icons.map((icon, index)=>(
-          <Link key={index} to={`${icon.path === "/search" && '/search'}`}>
+          <Link key={index} to={icon.path}>
             <div>{icon.icon}</div>
           </Link>
         ))}

@@ -23,9 +23,8 @@ export const icons = [
     icon: <SearchIcon className='text-xs'/>
   },
   {
-    path: "",
-    icon: <AccountCircleIcon  className='text-xs'/>
-  }
- 
+    path: "/profile",
+    icon: <AccountCircleIcon  className='text-xs'/>  
+  },
 ]
 

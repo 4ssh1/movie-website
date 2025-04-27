@@ -22,7 +22,7 @@ const movieSection = {
           value:"popularity.desc"
           },
           {name: "Top rated",
-          value:"vote_average.desc"
+          value:"vote_average.desc&vote_count.gte=1000"
           },   
         ]
     }
@@ -34,7 +34,7 @@ const tvShowsSection = {
           value:"popularity.desc"
           },
           {name: "Top rated",
-          value:"vote_average.desc"
+          value:"vote_average.desc&vote_count.gte=1000"
           },   
         ]
     }

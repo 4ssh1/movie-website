@@ -35,10 +35,10 @@ function SearchBar() {
       </div>
       {
         searchArr && searchArr?.length > 0 ?
-      <div>
+      <div >
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 sm:gap-2 gap-2 place-items-center sm:px-30 py-10">
           {searchArr?.filter(filter=>filter?.media_type !== "person")?.map(item=>(
-            <Cards src={`${imagePath}/${item?.poster_path?.replace(/^\/+/, '')}`} key={item.id}
+            <Cards src={`${imagePath}${item?.poster_path}`} key={item?.id}
             alt={item?.name || item?.title} type={item?.media_type} id={item?.id}
             />
           ))}
@@ -48,7 +48,7 @@ function SearchBar() {
         </div>
       </div>
       :
-      <div className="sm:h-[50vh] h-[20vh] flex items-center">
+      <div className=" h-[70vh] flex items-center">
         <p className="sm:text-sm text-xs pl-5 text-blue-950 dark:text-slate-500">
           Start typing to search ...
         </p>
