@@ -1,12 +1,66 @@
-# React + Vite
+# Movie Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains the source code for a dynamic Movie Website. It is built using modern web development technologies to deliver a seamless and interactive user experience.
 
-Currently, two official plugins are available:
+## Features
+- Dynamic Movie Listings: Browse and search for movies with detailed information.
+- Responsive Design: Optimized for desktop and mobile devices using CSS.
+- Interactive User Interface: Built with JavaScript to ensure a smooth user experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
+- React
+- Tailwind Css
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+To get started, follow these steps:
+
+1. Clone the repository:
+   ```bash
+     git clone https://github.com/4ssh1/movieWebsite.git
+     cd movieWebsite
+   ```
+   
+
+2. Install dependencies:
+   ```bash
+     npm install
+   ```
+
+3. Start the server:
+   ```bash
+     npm run dev
+   ```
+
+
+# MovieWebsite Project Structure
+
+```text
+movieWebsite/
+├── src/
+│   ├── components/      
+├── public/             
+├── .eslintrc            
+├── vite.config.js       
+└── package.json        
+```
+
+
+
+## Contributing
+We welcome contributions! To contribute:
+
+1. Fork the repository.
+   
+2. Create a new branch:
+   ```bash
+    git checkout -b feature-name
+   ```
+
+3. Commit your changes and push them to your fork.
+4. Create a pull request.
+
+## License
+This project is licensed under the MIT License.
+
+
