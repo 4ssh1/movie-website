@@ -10,13 +10,14 @@ function TvShowsPage() {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
   const skeletonArray = new Array(10).fill(0)
-  const {timeWindow, count} = usePages()
+  const {timeWindow, count, setTotalPages} = usePages()
   const noImage = "noImage.jpg" 
 
 
   useEffect(()=>{
     fetchDiscover("tv", {page: count, sort_by: timeWindow}).then(res=>{
       setData(res?.results)
+      setTotalPages(res?.total_pages)
       setLoading(false)
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }).catch(err=>{

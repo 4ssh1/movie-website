@@ -10,7 +10,7 @@ const [loading, setLoading] = useState(true)
 
 useEffect(()=>{
   fetchDiscover("movie").then(res=>{
-    console.log(res?.results)
+    console.log(res)
     setData(res?.results)
     setLoading(false)
   }).catch(err=>{

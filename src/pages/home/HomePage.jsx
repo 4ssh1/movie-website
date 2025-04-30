@@ -8,7 +8,7 @@ import Hero from "../../components/Hero"
 function HomePage() {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
-  const {timeWindow, count} = usePages()
+  const {timeWindow, count, totalPages, setTotalPages} = usePages()
 
   
   const skeletonArray = new Array(10).fill(0)
@@ -16,13 +16,15 @@ function HomePage() {
 
   useEffect(()=>{
     fetchTrending(timeWindow, count).then((res)=>{
-      setData(res)
+      setData(res?.results)
+      setTotalPages(res?.total_pages)
       setLoading(false)
+      console.log(res)
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }).catch(err=>console.log(err.message))
   }, [timeWindow, count])
 
-  console.log(data)
+  console.log(totalPages, data)
 
   return (
     <div className="relative min-h-screen w-full">

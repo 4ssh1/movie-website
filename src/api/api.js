@@ -7,8 +7,8 @@ export const imagePath = "https://image.tmdb.org/t/p/w500"
 export const imagePathOriginal = "https://image.tmdb.org/t/p/original"
 
 export async function fetchTrending(timeWindow = "day", page = 1){
-    const {data} = await axios.get(`${baseUrl}/trending/all/${timeWindow}?api_key=${apiKey}&page=${page}`)
-    return data?.results
+    const {data} = await axios.get(`${baseUrl}/trending/all/${timeWindow}?api_key=${apiKey}&page=${page}&vote_average.gte=7.0`)
+    return data
 } 
 
 export const fetchDetails = async (type, id, signal) => {

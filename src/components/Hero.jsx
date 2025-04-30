@@ -9,7 +9,7 @@ function Hero() {
 
   useEffect(() => {
     fetchTrending(timeWindow)
-      .then((res) => setData(res))
+      .then((res) => setData(res?.results))
       .catch((err) => console.log(err));
   }, [timeWindow]);
 

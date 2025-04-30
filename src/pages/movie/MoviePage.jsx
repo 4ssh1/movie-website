@@ -8,15 +8,15 @@ import PaginationBtn from "../../consts/PaginationBtn"
 function MoviePage() {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
-  const [page, setPage] = useState(1)
   const skeletonArray = new Array(10).fill(0)
-  const {timeWindow, count} = usePages()
+  const {timeWindow, count, setTotalPages} = usePages()
   const noImage = "noImage.jpg" 
 
 
   useEffect(()=>{
     fetchDiscover("movie", {page: count, sort_by: timeWindow}).then(res=>{
       setData(res?.results)
+      setTotalPages(res?.total_pages)
       setLoading(false)
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }).catch(err=>{

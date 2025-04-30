@@ -1,4 +1,4 @@
-import { useState, createContext, useContext } from "react"
+import { useState, createContext, useContext, useMemo } from "react"
 
 
 const PageContext = createContext()
@@ -6,9 +6,20 @@ const PageContext = createContext()
 function PaginationCxtProv({children}) {
     const [count, setCount] = useState(1)
     const [timeWindow, setimeWindow] = useState('day')
+    const [totalPages, setTotalPages] = useState(null)
+
+
+    const contextValue = useMemo(() => ({
+      count,
+      setCount,
+      timeWindow,
+      setimeWindow,
+      totalPages,
+      setTotalPages,
+    }), [count, timeWindow, totalPages]);
 
   return (
-    <PageContext.Provider value={{count, setCount, timeWindow, setimeWindow}}>
+    <PageContext.Provider value={contextValue}>
         {children}
     </PageContext.Provider>
   )

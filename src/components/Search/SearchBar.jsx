@@ -8,11 +8,12 @@ import { usePages } from "../../../utilities/PaginationCxtProv"
 function SearchBar() {
     const [search, setSearch] = useState("")
     const [searchArr, setSearchArr] = useState([])
-    const {count} = usePages()
+    const {count, setTotalPages} = usePages()
 
     useEffect(()=>{
       fetchSearch({query: search, page: count}).then(res=>{
         setSearchArr(res?.results)
+        setTotalPages(res?.total_pages)
       })
       filterSearch()
     }, [search])

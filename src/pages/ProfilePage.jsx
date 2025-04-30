@@ -2,7 +2,7 @@
 function ProfilePage() {
   return (
     <div>
-      <p>Hi </p>
+      <p>Add trailers I've watched and watchList </p>
     </div>
   )
 }

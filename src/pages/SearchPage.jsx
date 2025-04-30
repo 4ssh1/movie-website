@@ -1,5 +1,6 @@
 import SearchBar from '../components/search/SearchBar'
 
+
 function SearchPage() {
   return (
     <div className="sm:pl-20 pl-4">
