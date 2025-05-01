@@ -9,10 +9,9 @@ function HomePage() {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
   const {timeWindow, count, totalPages, setTotalPages} = usePages()
-
+  const noImage = "noImage.jpg" 
   
   const skeletonArray = new Array(10).fill(0)
-
 
   useEffect(()=>{
     fetchTrending(timeWindow, count).then((res)=>{

@@ -7,18 +7,21 @@ import { usePages } from "../../../utilities/PaginationCxtProv"
 
 function SearchBar() {
     const [search, setSearch] = useState("")
+    const [newSearch, setNewSearch] = useState('')
     const [searchArr, setSearchArr] = useState([])
     const {count, setTotalPages} = usePages()
+    const noImage = "noImage.jpg" 
 
     useEffect(()=>{
       fetchSearch({query: search, page: count}).then(res=>{
+        console.log(res)
         setSearchArr(res?.results)
         setTotalPages(res?.total_pages)
       })
       filterSearch()
-    }, [search])
+    }, [search, count])
 
-    console.log(searchArr.map(item=>item?.name))
+    console.log(searchArr.map(item=>item))
 
     function filterSearch(){
       const filtered = searchArr?.filter((searched)=>(
@@ -28,18 +31,26 @@ function SearchBar() {
       setSearchArr(filtered)
     }
 
+    function handleSubmit(e){
+      e.preventDefault()
+      setSearch(newSearch)
+    }
+
   return (
     <div>
       <div>
-        <input type="text" name="search" value={search} onChange={(e)=>setSearch(e.target.value)}
-        className="border-2 py-0.5 sm:mt-8 mt-5 w-[80%] rounded-md sm:px-6 px-3 outline-0"/>
+        <form onSubmit={(e)=>handleSubmit(e)}>
+          <input type="text" name="search" value={newSearch} onChange={(e)=>setNewSearch(e.target.value)}
+          className="border-2 py-0.5 sm:mt-8 mt-5 w-[80%] rounded-md sm:px-6 px-3 outline-0 text-[16px]"
+          placeholder="Search for movies, tv-shows"/>
+        </form>
       </div>
       {
         searchArr && searchArr?.length > 0 ?
       <div >
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 sm:gap-2 gap-2 place-items-center sm:px-30 py-10">
-          {searchArr?.filter(filter=>filter?.media_type !== "person")?.map(item=>(
-            <Cards src={`${imagePath}${item?.poster_path}`} key={item?.id}
+          {searchArr?.filter(arr=> arr?.media_type !== "person").map(item=>(
+            <Cards src={!item?.poster_path ? noImage : `${imagePath}${item?.poster_path}`} key={item?.id}
             alt={item?.name || item?.title} type={item?.media_type} id={item?.id}
             />
           ))}
@@ -51,7 +62,7 @@ function SearchBar() {
       :
       <div className=" h-[70vh] flex items-center">
         <p className="sm:text-sm text-xs pl-5 text-blue-950 dark:text-slate-500">
-          Start typing to search ...
+          No result found
         </p>
       </div>
       }

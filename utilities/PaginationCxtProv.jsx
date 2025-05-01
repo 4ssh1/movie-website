@@ -6,7 +6,7 @@ const PageContext = createContext()
 function PaginationCxtProv({children}) {
     const [count, setCount] = useState(1)
     const [timeWindow, setimeWindow] = useState('day')
-    const [totalPages, setTotalPages] = useState(null)
+    const [totalPages, setTotalPages] = useState(1)
 
 
     const contextValue = useMemo(() => ({
