@@ -26,10 +26,10 @@ function Hero() {
   const movie = data[index];
 
   return (
-    <div className="w-full sm:h-[50vh] h-[30vh]
-     relative mt-5 rounded-lg overflow-hidden">
+    <div className="w-full lg:h-[50vh] h-[25vh]
+     relative mt-5 rounded-lg overflow-hidden md:h-[37vh]">
       <div
-        className={`w-full sm:h-[50vh] h-[30vh] bg-cover bg-center transition-all duration-1000 ease-in-out absolute ${
+        className={`w-full lg:h-[50vh] h-[25vh] md:h-[37vh] bg-cover bg-center transition-all duration-1000 ease-in-out absolute ${
           movie ? `` : "bg-slate-300 animate-pulse rounded overflow-hidden shadow-lg"
         }`}
         style={{
@@ -37,23 +37,23 @@ function Hero() {
         }}
       ></div>
 
-      <div className="w-full sm:h-[50vh] h-[30vh] backdrop-blur-md absolute"></div>
+      <div className="w-full lg:h-[50vh] h-[25vh] md:h-[37vh] backdrop-blur-md absolute"></div>
 
       {movie && (
-        <div className="text-white sm:p-8 p-2 flex justify-center animate-fade-text absolute w-full h-full">
-          <div className="sm:w-2/3 sm:pt-10 pt-4 w-1/2 ">
+        <div className="text-white sm:p-8 p-2 flex justify-between items-center animate-fade-text absolute w-full h-full gap-5">
+          <div className="w-2/5 lg:w-1/2">
             <h1 className="sm:text-4xl text-sm paytone font-bold mb-4">
               {movie?.title || movie?.name}
             </h1>
-            <p className="sm:text-sm text-xs lato sm:max-w-2/3 line-clamp-3">
+            <p className="sm:text-[16px] text-xs lato sm:max-w-2/3 line-clamp-3">
               {movie?.overview}
             </p>
           </div>
-          <div className="sm:w-1/3 w-56 pt-10">
+          <div className="w-3/5 lg:w-1/2 ">
             <img
               src={`${imagePath}/${movie?.backdrop_path}`}
               alt={`${movie?.title || movie?.name}-img`}
-              className="rounded"
+              className="rounded lg:rounded-2xl"
             />
           </div>
         </div>

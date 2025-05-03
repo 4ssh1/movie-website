@@ -1,5 +1,4 @@
 import SearchIcon from '@mui/icons-material/Search';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 export  const Menu = [
       {
@@ -14,16 +13,12 @@ export  const Menu = [
         title: "TV Shows",
         path: "/shows",
       },
+      {
+        path: "/search",
+        icon: <SearchIcon className='text-xs'/>
+      },
   ]
 
 
-export const icons = [
-  {
-    path: "/search",
-    icon: <SearchIcon className='text-xs'/>
-  },
-  {
-    icon: <AccountCircleIcon  className='text-xs'/>  
-  },
-]
+
 
