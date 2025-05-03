@@ -1,10 +1,10 @@
-import PaginationCxtProv from "./PaginationCxtProv"
+import ContextProvAll from "./ContextProvAll"
 
 function ContextWrapper({children}) {
   return (
-        <PaginationCxtProv>
+        <ContextProvAll>
             {children}
-        </PaginationCxtProv>
+        </ContextProvAll>
   )
 }
 

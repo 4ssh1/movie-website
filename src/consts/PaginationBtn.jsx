@@ -1,5 +1,5 @@
 import { useSearchParams } from 'react-router-dom';
-import { usePages } from '../../utilities/PaginationCxtProv';
+import { usePages } from '../../utilities/context/ContextProvAll';
 
 function PaginationBtn() {
     const {count, setCount, totalPages} = usePages()

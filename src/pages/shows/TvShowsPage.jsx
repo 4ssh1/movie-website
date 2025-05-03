@@ -3,7 +3,7 @@ import {  fetchDiscover, imagePath } from "../../api/api"
 import Cards from "../../components/Card"
 import ShowsHero from "../../components/shows/showsHero"
 import PaginationBtn from "../../consts/PaginationBtn"
-import { usePages } from "../../../utilities/PaginationCxtProv"
+import { usePages } from "../../../utilities/context/ContextProvAll"
 
 
 function TvShowsPage() {

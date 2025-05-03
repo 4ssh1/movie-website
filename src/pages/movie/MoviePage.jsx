@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import MovieHero from "../../components/movie/MovieHero"
 import {  fetchDiscover, imagePath } from "../../api/api"
 import Cards from "../../components/Card"
-import { usePages } from "../../../utilities/PaginationCxtProv"
+import { usePages } from "../../../utilities/context/ContextProvAll"
 import PaginationBtn from "../../consts/PaginationBtn"
 
 function MoviePage() {

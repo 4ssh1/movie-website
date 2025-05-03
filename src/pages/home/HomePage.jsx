@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import PaginationBtn from "../../consts/PaginationBtn"
 import { fetchTrending, imagePath } from "../../api/api"
-import { usePages } from "../../../utilities/PaginationCxtProv";
+import { usePages } from "../../../utilities/context/ContextProvAll";
 import Cards from "../../components/Card"
 import Hero from "../../components/Hero"
 

@@ -1,8 +1,12 @@
 import { Menu, icons } from "../../consts/NavbarConsts"
 import { Link } from "react-router-dom"
 import ThemeButton from './ThemeButton'
+import { usePages } from "../../../utilities/context/ContextProvAll"
+import { useState, useEffect } from "react"
 
  function MenuBar() {
+  const {user, setUser, signInWithGoogle, logOut } = usePages()
+
   return (
     <div className="flex justify-center items-center gap-5">
       <div className="flex gap-3 sm:block">
@@ -14,7 +18,9 @@ import ThemeButton from './ThemeButton'
       </div>
         {icons.map((icon, index)=>(
           <Link key={index} to={icon.path}>
-            <div>{icon.icon}</div>
+            <div>
+              {icon.icon}
+            </div>
           </Link>
         ))}
       <div>

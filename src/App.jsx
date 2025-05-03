@@ -1,6 +1,6 @@
-import ThemeContextProvider from "../utilities/ThemeContextProvider";
-import ContextWrapper from "../utilities/ContextWrapper";
-import AppContent from "../utilities/AppContent";
+import ThemeContextProvider from "../utilities/context/ThemeContextProvider";
+import ContextWrapper from "../utilities/context/ContextWrapper";
+import AppContent from "../utilities/context/AppContent";
 
 function App() {
   return (

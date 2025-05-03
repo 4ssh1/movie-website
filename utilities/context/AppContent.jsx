@@ -1,5 +1,5 @@
 import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
-import RoutesConfig from "../RoutesConfig";
+import RoutesConfig from "../../RoutesConfig";
 import { useThemeMode } from "./ThemeContextProvider";
 
 function AppContent() {

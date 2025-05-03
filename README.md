@@ -37,12 +37,70 @@ To get started, follow these steps:
 
 ```text
 movieWebsite/
-├── src/
-│   ├── components/      
-├── public/             
-├── .eslintrc            
-├── vite.config.js       
-└── package.json        
+eslint.config.js
+index.html
+package-lock.json
+package.json
+postcss.config.mjs
+public
+├── collage.jpg
+├── movie.jpg
+├── noImage.jpg
+├── youtube.svg
+README.md
+RoutesConfig.jsx
+services
+├── firebase.js
+src
+├── api
+│   ├── api.js
+├── App.jsx
+├── assets
+├── components
+│   ├── Card.jsx
+│   ├── Footer.jsx
+│   ├── Hero.jsx
+│   ├── Layout.jsx
+│   ├── movie
+│   │   ├── MovieHero.jsx
+│   ├── navbar
+│   │   ├── DynamicBar.jsx
+│   │   ├── MenuBar.jsx
+│   │   ├── Navbar.jsx
+│   │   ├── ThemeButton.jsx
+│   ├── Profile.jsx
+│   ├── search
+│   │   ├── SearchBar.jsx
+│   ├── shows
+│   │   ├── ShowsHero.jsx
+│   ├── VideoComponent.jsx
+├── consts
+│   ├── NavbarConsts.jsx
+│   ├── PaginationBtn.jsx
+├── index.css
+├── main.jsx
+├── pages
+│   ├── Details.jsx
+│   ├── home
+│   │   ├── HomePage.jsx
+│   ├── movie
+│   │   ├── MoviePage.jsx
+│   ├── ProfilePage.jsx
+│   ├── SearchPage.jsx
+│   ├── shows
+│   │   ├── TvShowsPage.jsx
+├── routes
+│   ├── DetailsRoutes.jsx
+│   ├── MainRoutes.jsx
+│   ├── SearchRoutes.jsx
+tailwind.config.js
+utilities
+├── context
+│   ├── AppContent.jsx
+│   ├── ContextWrapper.jsx
+│   ├── ContextProvAll.jsx
+│   ├── ThemeContextProvider.jsx
+vite.config.js    
 ```
 
 
