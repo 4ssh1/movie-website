@@ -1,7 +1,7 @@
 
 function ProfilePage() {
   return (
-    <div>
+    <div className="h-[80vh]">
       <p>Add trailers I've watched and watchList </p>
     </div>
   )

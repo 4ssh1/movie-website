@@ -21,7 +21,6 @@ function ContextProvAll({children}) {
       totalPages,
       setTotalPages,
       user,
-      setUser,
       signInWithGoogle,
       logOut
     }), [count, timeWindow, totalPages, user]);
