@@ -2,8 +2,7 @@ import { useState, useEffect } from "react"
 import { fetchSearch, imagePath } from "../../api/api"
 import Cards from "../Card"
 import PaginationBtn from "../../consts/PaginationBtn"
-import { usePages } from "../../../utilities/context/ContextProvAll"
-
+import { usePages } from "../../context/ContextProvAll"
 
 function SearchBar() {
     const [search, setSearch] = useState("")

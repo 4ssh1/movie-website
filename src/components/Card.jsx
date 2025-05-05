@@ -9,16 +9,16 @@ function Cards({src, alt, type, id}) {
 
   return (
     <Link to={`/${type}/${id}`}>
-      <div className='w-[135px]'>
-          <div className='relative w-[135px]'>
+      <div className='w-[160px]'>
+          <div className='relative w-[160px]'>
             <Card sx={{
-              maxWidth: 135,
-              width: 135,
+              maxWidth: 160,
+              width: 160,
               backgroundColor: "transparent",
               }}>
                 <CardMedia
                     sx={{
-                      height: 200,
+                      height: 220,
                     }}
                     image={src}
                     component="img"

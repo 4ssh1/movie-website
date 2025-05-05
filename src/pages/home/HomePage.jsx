@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import PaginationBtn from "../../consts/PaginationBtn"
 import { fetchTrending, imagePath } from "../../api/api"
-import { usePages } from "../../../utilities/context/ContextProvAll";
+import { usePages } from "../../context/ContextProvAll"
 import Cards from "../../components/Card"
 import Hero from "../../components/Hero"
 
@@ -28,21 +28,21 @@ function HomePage() {
   return (
     <div className="relative min-h-screen w-full">
       <Hero />
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 md:px-10 gap-2 place-items-center sm:px-30 py-10">
-          {loading ? skeletonArray.map((_, index) => (
-              <div
-                key={index}
-                className="w-[135px] h-[200px] bg-slate-300 animate-pulse rounded overflow-hidden shadow-lg"
-              />
-            ))          
-          :
-          data && data?.map((item)=>(
-            <Cards  src={!item?.poster_path ? noImage : `${imagePath}${item?.poster_path}`} key={item?.id} 
-            alt={item?.name || item?.title} type={item?.media_type} id={item?.id}/>
-          ))}
-        </div>
-        <PaginationBtn />
-    </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 justify-around w-full place-items-center py-10">
+            {loading ? skeletonArray.map((_, index) => (
+                <div
+                  key={index}
+                  className="w-[180px] h-[200px] bg-slate-300 animate-pulse rounded overflow-hidden shadow-lg"
+                />
+                    ))
+                    :
+                    data && data?.map((item)=>(
+                      <Cards  src={!item?.poster_path ? noImage : `${imagePath}${item?.poster_path}`} key={item?.id}
+                      alt={item?.name || item?.title} type={item?.media_type} id={item?.id}/>
+                    ))}
+                </div>
+            <PaginationBtn />
+          </div>
   )
 }
 

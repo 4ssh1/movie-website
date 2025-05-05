@@ -1,5 +1,5 @@
 import { useState, createContext, useContext, useMemo, useEffect } from "react"
-import { auth } from "../../services/firebase"
+import { auth } from "../services/firebase"
 import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth"
 import PropTypes from "prop-types"
 
@@ -37,7 +37,7 @@ function ContextProvAll({children}) {
 
     function signInWithGoogle(){
       const provider = new GoogleAuthProvider();
-      return signInWithPopup(auth)
+      return signInWithPopup(auth, provider)
     }
 
     function logOut(){

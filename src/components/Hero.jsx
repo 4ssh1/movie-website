@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { fetchTrending, imagePath } from "../api/api";
-import { usePages } from "../../utilities/context/ContextProvAll";
+import { usePages } from "../context/ContextProvAll";
 
 function Hero() {
   const [index, setIndex] = useState(0);

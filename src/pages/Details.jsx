@@ -1,11 +1,12 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
-import { fetchDetails, imagePath, fetchCredits, fetchVideos} from "../api/api"
-import Profile from "../components/Profile";
 import { FaRegClock } from "react-icons/fa";
-
-import { CircularProgress, Box, Typography } from '@mui/material';
+import { CircularProgress, Box, Typography, Alert, Snackbar } from '@mui/material';
+import { fetchDetails, imagePath, fetchCredits, fetchVideos} from "../api/api"
 import VideoComponent from "../components/VideoComponent";
+import Profile from "../components/Profile";
+import { usePages } from "../context/ContextProvAll";
+
 
 function CircularRating({ value }) {
   return (
@@ -29,7 +30,7 @@ function CircularRating({ value }) {
         alignItems="center"
         justifyContent="center"
       >
-        <Typography variant="caption" component="div" className="absolute left-2 top-2.5 text-white">
+        <Typography variant="caption" component="div" className="absolute left-2 top-2.5 text-white ">
           {`${Math.round(value)}%`}
         </Typography>
       </Box>
@@ -41,7 +42,9 @@ function CircularRating({ value }) {
 function Details() {
   const router = useParams()
   const {id, type} = router
+  const {user} = usePages()
   const clock = <FaRegClock />
+  const noImage = "noImage.jpg"
 
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
@@ -49,6 +52,7 @@ function Details() {
   const [credits, setCredits] = useState([])
   const [videos, setVideos] = useState([])
   const [trailer, setTrailer] = useState(null)
+  const [toast, setToast] = useState(false)
 
   useEffect(()=>{ 
     const controller = new AbortController()
@@ -106,7 +110,35 @@ function Details() {
       clearTimeout(clearErrorTimeout);
     };
   }, [loading]);
-  
+
+  // export default function BasicAlerts() {
+  //   return (
+  //     <Stack sx={{ width: '100%' }} spacing={2}>
+  //       <Alert severity="success">This is a success Alert.</Alert>
+  //       <Alert severity="info">This is an info Alert.</Alert>
+  //       <Alert severity="warning">This is a warning Alert.</Alert>
+  //       <Alert severity="error">This is an error Alert.</Alert>
+  //     </Stack>
+  //   );
+  // }
+
+  function handleClose(){
+    setToast(false)
+  }
+
+  async function handleAddToWatchList(){
+    if(user){
+      const watchListData = {
+        id: data?.id,
+        name: data?.original_title || data?.original_name,
+        poster_path: data?.poster_path,
+        release_date: data?.release_date || data?.last_air_date,
+        type: type,
+        overview: data?.overview
+      }
+    
+    }
+  }
   
   return (
     <div className="my-5">
@@ -133,10 +165,10 @@ function Details() {
                 <div className="absolute top-0 left-0 bg-slate-900 opacity-50 w-full sm:h-[69vh] h-full"></div>
                     <div className="flex backdrop-blur-xs w-full sm:h-[69vh] h-[50vh] sm:gap-5 pr-2.5 sm:pr-0 ">
                         <div className="sm:w-1/3 w-15 pt-1 h-full pl-3 flex justify-center items-center">
-                          <img src={`${imagePath}/${data?.poster_path}`} alt="" className="w-0 sm:w-[250px]"/>
+                          <img src={`${imagePath}${data?.poster_path}`} alt="" className="w-0 sm:w-[250px]"/>
                         </div>
                         <div className="flex flex-col justify-center w-full sm:w-2/3 sm:gap-3 gap-2 sm:pr-10 ">
-                            <p className="paytone sm:text-3xl text-[16px]">{data?.original_title || data?.original_name}
+                            <p className="paytone sm:text-3xl text-[12px]">{data?.original_title || data?.original_name}
                               <span className="lato pl-5 "> 
                                 ( {new Date(data?.release_date || data?.last_air_date).getFullYear()} )
                               </span>
@@ -144,21 +176,22 @@ function Details() {
                             <div>
                                 <span className="text-xs sm:text-sm"> 
                                   {new Date(data?.release_date || data?.last_air_date)?.toLocaleDateString()} </span>
-                                <span className="sm:text-sm text-xs bg-white text-black text-center sm:p-1 p-0.5 ml-3 rounded-md"> 
+                                <span className="sm:text-sm text-[9px] bg-white text-black text-center sm:p-1 p-0.5 ml-3 rounded-md"> 
                                    {data?.origin_country} </span>
-                                <span className="flex items-center gap-4 pt-0.5">
+                                <span className="flex items-center gap-4 pt-0.5 sm:text-sm text-[9px]">
                                 {/* data?.number_of_seasons} seasons` || data?.runtime} */}
                                   {clock }{`${type === "movie" ? (data?.runtime / 60).toFixed(1) + " hours" :
                                      data?.number_of_seasons + " seasons"}`
                                   } 
                                 </span>
-                                <h3 className="paytone sm:text-2xl  sm:leading-10 leading-7">Overview</h3>
-                                <p className="sm:text-sm text-[10px] tracking-wider line-clamp-6 sm:leading-7">{data?.overview}</p>
+                                <h3 className="paytone sm:text-2xl text-[9px] sm:leading-10 leading-7">Overview</h3>
+                                <p className="sm:text-sm text-[9px] tracking-wider line-clamp-6 sm:leading-5">{data?.overview}</p>
                             </div>
                             <div className="flex ">
                               <CircularRating value={(data?.vote_average * 10).toFixed(0)} />
                               <button className="inline-block sm:ml-10 ml-25 text-center border-[1px] 
-                              p-2 sm:text-sm text-[9px] mb-5 rounded-sm"><span> ➕ </span> Add to WatchList</button>
+                              p-2 sm:text-sm text-[9px] mb-5 rounded-sm" onClick={()=>handleAddToWatchList()}
+                              ><span> ➕ </span> Add to WatchList</button>
                             </div>
                             <p>
                               {data?.genres?.map(genre=>(
@@ -171,6 +204,16 @@ function Details() {
                              inline-block w-fit px-2 rounded-md border-[1px] backdrop-blur-md text-[9px]">{data?.status}</span>
                         </div>
                     </div>
+                    <Snackbar
+                    open={open}
+                    autoHideDuration={4000} // 4 seconds
+                    onClose={handleClose}
+                    >
+                      {toast ? 
+                      <Alert severity="error">Login to save to WatchList.</Alert> : 
+                      <Alert severity="success">Watchlist added.</Alert>
+                      }
+                  </Snackbar>
               </div>
               {/* year, age, limited series, spatial audio, chat , number of episodes */}
                   <div>
@@ -178,7 +221,7 @@ function Details() {
                     <div className="flex sm:gap-10 gap-3 sm:justify-center items-center overflow-x-scroll hide-scrollbar">
                       {credits && credits?.map(credit=>(
                         <div key={credit?.id} className="text-center">
-                          <Profile src={credit?.profile_path}/>
+                          <Profile src={!credit?.profile_path ? noImage : `${imagePath}${credit?.profile_path}`}/>
                           <p className="sm:text-xs text-[5px] pt-2 lato">{credit.name} </p>
                           <p className="sm:text-xs text-[5px] ">as <span className="font-medium">{credit.character}</span></p>
                         </div>

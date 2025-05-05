@@ -2,7 +2,11 @@
 function ProfilePage() {
   return (
     <div className="h-[80vh] p-5 ">
-      <p>Add trailers I've watched and watchList </p>
+      <p className="paytone text-2xl">WatchList </p>
+
+      <div>
+        
+      </div>
     </div>
   )
 }

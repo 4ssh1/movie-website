@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './src/components/navbar/Navbar';
-import mainRoutes from './src/routes/MainRoutes';
-import searchRoutes from './src/routes/SearchRoutes';
-import detailsRoutes from './src/routes/DetailsRoutes';
-import Layout from './src/components/Layout';
+import Navbar from './components/navbar/Navbar';
+import mainRoutes from './routes/MainRoutes';
+import searchRoutes from './routes/SearchRoutes';
+import detailsRoutes from './routes/DetailsRoutes';
+import Layout from './components/Layout';
 
 const allRoutes = [...mainRoutes, ...searchRoutes, ...detailsRoutes];
 

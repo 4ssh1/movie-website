@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useLocation } from "react-router-dom"
-import { usePages } from "../../../utilities/context/ContextProvAll"
+import { usePages } from "../../context/ContextProvAll"
 
 const homeSection = {
         title:  "trending",

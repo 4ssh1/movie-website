@@ -48,9 +48,6 @@ public
 ├── noImage.jpg
 ├── youtube.svg
 README.md
-RoutesConfig.jsx
-services
-├── firebase.js
 src
 ├── api
 │   ├── api.js
@@ -69,6 +66,7 @@ src
 │   │   ├── Navbar.jsx
 │   │   ├── ThemeButton.jsx
 │   ├── Profile.jsx
+│   ├── ProtectedRoute.jsx
 │   ├── search
 │   │   ├── SearchBar.jsx
 │   ├── shows
@@ -77,6 +75,11 @@ src
 ├── consts
 │   ├── NavbarConsts.jsx
 │   ├── PaginationBtn.jsx
+├── context
+│   ├── AppContent.jsx
+│   ├── ContextProvAll.jsx
+│   ├── ContextWrapper.jsx
+│   ├── ThemeContextProvider.jsx
 ├── index.css
 ├── main.jsx
 ├── pages
@@ -93,14 +96,11 @@ src
 │   ├── DetailsRoutes.jsx
 │   ├── MainRoutes.jsx
 │   ├── SearchRoutes.jsx
+├── RoutesConfig.jsx
+├── services
+│   ├── firebase.js
 tailwind.config.js
-utilities
-├── context
-│   ├── AppContent.jsx
-│   ├── ContextWrapper.jsx
-│   ├── ContextProvAll.jsx
-│   ├── ThemeContextProvider.jsx
-vite.config.js    
+vite.config.js 
 ```
 
 

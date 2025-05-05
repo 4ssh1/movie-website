@@ -2,8 +2,8 @@ import { useState, useEffect } from "react"
 import MovieHero from "../../components/movie/MovieHero"
 import {  fetchDiscover, imagePath } from "../../api/api"
 import Cards from "../../components/Card"
-import { usePages } from "../../../utilities/context/ContextProvAll"
 import PaginationBtn from "../../consts/PaginationBtn"
+import { usePages } from "../../context/ContextProvAll"
 
 function MoviePage() {
   const [data, setData] = useState([])
@@ -29,7 +29,7 @@ function MoviePage() {
   return (
     <div>
       <MovieHero />
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 sm:gap-2 gap-2 place-items-center sm:px-30 py-10">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 sm:gap-2 gap-2 place-items-center  py-10">
           {loading ? skeletonArray.map((_, index) => (
               <div
                 key={index}
