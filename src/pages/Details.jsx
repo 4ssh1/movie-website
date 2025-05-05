@@ -52,7 +52,7 @@ function Details() {
   const [credits, setCredits] = useState([])
   const [videos, setVideos] = useState([])
   const [trailer, setTrailer] = useState(null)
-  const [toast, setToast] = useState(false)
+  const [open, setOpen] = useState(true)
 
   useEffect(()=>{ 
     const controller = new AbortController()
@@ -111,19 +111,9 @@ function Details() {
     };
   }, [loading]);
 
-  // export default function BasicAlerts() {
-  //   return (
-  //     <Stack sx={{ width: '100%' }} spacing={2}>
-  //       <Alert severity="success">This is a success Alert.</Alert>
-  //       <Alert severity="info">This is an info Alert.</Alert>
-  //       <Alert severity="warning">This is a warning Alert.</Alert>
-  //       <Alert severity="error">This is an error Alert.</Alert>
-  //     </Stack>
-  //   );
-  // }
 
   function handleClose(){
-    setToast(false)
+    setOpen(false)
   }
 
   async function handleAddToWatchList(){
@@ -136,7 +126,7 @@ function Details() {
         type: type,
         overview: data?.overview
       }
-    
+    setOpen(true)
     }
   }
   
@@ -206,10 +196,10 @@ function Details() {
                     </div>
                     <Snackbar
                     open={open}
-                    autoHideDuration={4000} // 4 seconds
+                    autoHideDuration={3000} // 3 seconds
                     onClose={handleClose}
                     >
-                      {toast ? 
+                      {!user ? 
                       <Alert severity="error">Login to save to WatchList.</Alert> : 
                       <Alert severity="success">Watchlist added.</Alert>
                       }
