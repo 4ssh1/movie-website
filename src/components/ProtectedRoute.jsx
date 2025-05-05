@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import { node } from "prop-types"
 import { useNavigate } from "react-router-dom"
 import { usePages } from "../context/ContextProvAll"
@@ -5,11 +6,16 @@ import { usePages } from "../context/ContextProvAll"
 function ProtectedRoute({children}) {
   const {user} = usePages()
   const navigate = useNavigate()
-  return (
-    <>
-      {user ? children : navigate('/')}
-    </>
-  )
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/');
+    }
+  }, [user, navigate]);
+
+  if (!user) return null; 
+  
+    return <>{children}</>;
 }
 
 export default ProtectedRoute

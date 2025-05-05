@@ -1,12 +1,13 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { FaRegClock } from "react-icons/fa";
+import { GrStatusGood } from "react-icons/gr";
 import { CircularProgress, Box, Typography, Alert, Snackbar } from '@mui/material';
 import { fetchDetails, imagePath, fetchCredits, fetchVideos} from "../api/api"
 import VideoComponent from "../components/VideoComponent";
 import Profile from "../components/Profile";
 import { usePages } from "../context/ContextProvAll";
-
+import { firestore } from "../services/fireStore";
 
 function CircularRating({ value }) {
   return (
@@ -52,7 +53,9 @@ function Details() {
   const [credits, setCredits] = useState([])
   const [videos, setVideos] = useState([])
   const [trailer, setTrailer] = useState(null)
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
+  const [inWatchList, setInWatchList] = useState(false)
+  const { addToWatchList, isDatainWatchList, removeFromWatchList} = firestore()
 
   useEffect(()=>{ 
     const controller = new AbortController()
@@ -76,7 +79,6 @@ function Details() {
     return ()=> controller.abort()
   }, [])
   
-  console.log(videos, trailer, data, credits)
 
   // useEffect(()=>{
   //   if(loading){
@@ -111,6 +113,15 @@ function Details() {
     };
   }, [loading]);
 
+  useEffect(()=>{
+    if (!user){
+      setInWatchList(false)
+    }
+    isDatainWatchList(user?.uid, id).then(data=>{
+      setInWatchList(data)
+    })
+  },[user, id])
+
 
   function handleClose(){
     setOpen(false)
@@ -127,9 +138,22 @@ function Details() {
         overview: data?.overview
       }
     setOpen(true)
-    }
+    // addDocToFireStore("watch_lists", watchListData)
+    const dataString = data?.id.toString()
+    await addToWatchList(user?.uid, dataString, watchListData)
+    const watchList = await isDatainWatchList(user?.uid, dataString)
+    setInWatchList(watchList)
+      }
+  }
+
+  async function handleRemoveFromWatchList() {
+    await removeFromWatchList(user?.uid, id)
+    const watchList = await isDatainWatchList(user?.uid, id)
+    setInWatchList(watchList)
   }
   
+ 
+
   return (
     <div className="my-5">
       {loading ? 
@@ -179,9 +203,22 @@ function Details() {
                             </div>
                             <div className="flex ">
                               <CircularRating value={(data?.vote_average * 10).toFixed(0)} />
-                              <button className="inline-block sm:ml-10 ml-25 text-center border-[1px] 
-                              p-2 sm:text-sm text-[9px] mb-5 rounded-sm" onClick={()=>handleAddToWatchList()}
-                              ><span> ➕ </span> Add to WatchList</button>
+                              <button
+                              className="inline-block sm:ml-10 ml-6 text-center border p-2 sm:text-sm text-[9px] mb-5 rounded-sm"
+                              
+                            >
+                              {inWatchList ? (
+                                <span className="inline-flex items-center gap-1" onClick={handleRemoveFromWatchList}>
+                                  <GrStatusGood /> Added to WatchList
+                                </span>
+                              ) : (
+                                <span className="inline-flex items-center gap-1" onClick={handleAddToWatchList}>
+                                  ➕ Add to WatchList
+                                </span>
+                              )}
+                            </button>
+
+                              
                             </div>
                             <p>
                               {data?.genres?.map(genre=>(
@@ -200,7 +237,8 @@ function Details() {
                     onClose={handleClose}
                     >
                       {!user ? 
-                      <Alert severity="error">Login to save to WatchList.</Alert> : 
+                      <Alert severity="error">Login to save to WatchList.</Alert> 
+                      : 
                       <Alert severity="success">Watchlist added.</Alert>
                       }
                   </Snackbar>
