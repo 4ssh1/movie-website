@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
 import { firestore } from "../services/fireStore"
 import { usePages } from "../context/ContextProvAll"
+import Cards from "../components/Card"
+import { imagePath } from "../api/api"
 
 function ProfilePage() {
   const [data, setData] = useState({})
@@ -21,7 +23,7 @@ function ProfilePage() {
         console.log(err)
       })
     }
-  }, [data])
+  }, [user?.id, getWatchLists])
 
   return (
     <div className="p-5">

@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { db } from "./firebase";
 import { addDoc, collection, doc, setDoc, getDoc, deleteDoc, getDocs } from "firebase/firestore";
 
@@ -60,17 +61,19 @@ export const firestore = ()=>{
       }
     }
 
-    const getWatchLists = async (userId) => {
+
+    const getWatchLists = useCallback( async (userId) => {
       const querySnapShot = await getDocs(collection(
         db,
           "users",
           userId?.toString(),
-          "watch_lists"
+          "watch_lists",
       ))
 
-      const data = querySnapShot.docs.map({...doc.data})
+      const data = querySnapShot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      console.log(data);
       return data
-    }
+    },[])
 
     return {
         addDocToFireStore, addToWatchList, isDatainWatchList, removeFromWatchList, getWatchLists

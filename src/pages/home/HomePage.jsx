@@ -28,7 +28,7 @@ function HomePage() {
   return (
     <div className="relative min-h-screen w-full">
       <Hero />
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 justify-around w-full place-items-center py-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 justify-around w-full gap-3 place-items-center py-10">
             {loading ? skeletonArray.map((_, index) => (
                 <div
                   key={index}
