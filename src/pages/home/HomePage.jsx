@@ -23,7 +23,7 @@ function HomePage() {
     }).catch(err=>console.log(err.message))
   }, [timeWindow, count])
 
-  console.log(totalPages, data)
+  console.log(totalPages, data, timeWindow)
 
   return (
     <div className="relative min-h-screen w-full">

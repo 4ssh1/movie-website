@@ -4,21 +4,17 @@ const ThemeContext = createContext()
 
 
 function ThemeContextProvider({children}) {
-  const [darkMode, setDarkMode] = useState(false)
-  
   const toggleDarkMode = ()=> setDarkMode(prev => !prev)
-  
-  useEffect(()=>{
-    const savedTheme = localStorage.getItem('theme')
-    setDarkMode(savedTheme !== 'light')
-  }, [])
-  
+
+  const [darkMode, setDarkMode] = useState(() => {
+    const savedTheme = localStorage.getItem('theme');
+    return savedTheme ? savedTheme !== 'light' : false;
+  });
+   
   useEffect(()=>{
     localStorage.setItem('theme', darkMode ? 'dark' : 'light')
   }, [darkMode])
-  
-  
-  
+   
   return (
     <ThemeContext.Provider value={{darkMode, toggleDarkMode}}>
       {children}

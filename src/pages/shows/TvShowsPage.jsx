@@ -24,7 +24,7 @@ function TvShowsPage() {
     })
   }, [count, timeWindow])
 
-  console.log(data)
+  console.log(timeWindow)
 
   return (
     <div>

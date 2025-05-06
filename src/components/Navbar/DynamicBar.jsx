@@ -9,11 +9,6 @@ const homeSection = {
         ]
     }
 
-  //   <select onChange={(e) => setSort(e.target.value)}>
-  //   <option value="popularity.desc">Popularity</option>
-  //   <option value="vote_average.desc">Top Rated</option>
-  //   <option value="release_date.desc">Newest</option>
-  //   </select>
 
 const movieSection = {
         title:  "discover movies",
@@ -22,7 +17,7 @@ const movieSection = {
           value:"popularity.desc"
           },
           {name: "Top rated",
-          value:"vote_average.desc&vote_count.gte=1000"
+          value:"vote_average.desc"
           },   
         ]
     }
@@ -34,7 +29,7 @@ const tvShowsSection = {
           value:"popularity.desc"
           },
           {name: "Top rated",
-          value:"vote_average.desc&vote_count.gte=1000"
+          value:"vote_average.desc"
           },   
         ]
     }
