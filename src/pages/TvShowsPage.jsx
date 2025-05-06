@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react"
-import {  fetchDiscover, imagePath } from "../../api/api"
-import Cards from "../../components/Card"
-import ShowsHero from "../../components/shows/showsHero"
-import PaginationBtn from "../../consts/PaginationBtn"
-import { usePages } from "../../context/ContextProvAll"
+import {  fetchDiscover, imagePath } from "../api/api"
+import Cards from "../components/Card"
+import ShowsHero from "../components/shows/showsHero"
+import PaginationBtn from "../consts/PaginationBtn"
+import { usePages } from "../context/ContextProvAll"
 
 function TvShowsPage() {
   const [data, setData] = useState([])

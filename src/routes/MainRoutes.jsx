@@ -1,6 +1,6 @@
 import HomePage from "../pages/home/HomePage";
-import MoviePage from "../pages/movie/MoviePage";
-import TvShowsPage from "../pages/shows/TvShowsPage";
+import MoviePage from "../pages/MoviePage";
+import TvShowsPage from "../pages/TvShowsPage";
 import ProfilePage from "../pages/ProfilePage";
 import ProtectedRoute from "../components/ProtectedRoute";
 
