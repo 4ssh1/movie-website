@@ -1,5 +1,5 @@
-import DynamicBar from "./DynamicBar"
-import MenuBar from "./MenuBar"
+import DynamicBar from "./navbar/DynamicBar"
+import MenuBar from "./navbar/MenuBar"
 
 function Navbar() {
   return (
