@@ -29,9 +29,9 @@ function ProfilePage() {
   function removeWatchList(e, item){
     e.preventDefault()
     removeFromWatchList(user?.uid, item.id).then(()=>{
-      setData((prev)=>{
+      setData((prev)=>(
         prev?.filter(pre=>pre.id !== item.id)
-      })
+      ))
     })
   }
 
