@@ -1,4 +1,4 @@
-import SearchBar from '../components/search/SearchBar'
+import SearchBar from '../components/Search/SearchBar'
 
 
 function SearchPage() {

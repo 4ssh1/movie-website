@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import MovieHero from "../components/movie/MovieHero"
+import MovieHero from "../components/MovieHero"
 import {  fetchDiscover, imagePath } from "../api/api"
 import Cards from "../components/Card"
 import PaginationBtn from "../consts/PaginationBtn"
