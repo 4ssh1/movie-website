@@ -2,14 +2,24 @@
 
 This repository contains the source code for a dynamic Movie Website. It is built using modern web development technologies to deliver a seamless and interactive user experience.
 
-## Features
-- Dynamic Movie Listings: Browse and search for movies with detailed information.
-- Responsive Design: Optimized for desktop and mobile devices using CSS.
-- Interactive User Interface: Built with JavaScript to ensure a smooth user experience.
+## 🎬 Features
+
+- 🔥 **Trending Filter** – Dynamically view movies by _Today_, _This Week_, _Popular_, or _Top Rated_.
+- 🔍 **Search Functionality** – Instantly search for movies or shows by title.
+- ✅ **User Authentication** – Login with Google to access personalized features.
+- 🎯 **Watchlist Management** – Add or remove movies from your watchlist with a single click.
+- 💾 **Persistent State** – Watchlist and preferences are saved per user, even on refresh.
+
+![Project Banner](./assets/live.png)
+
 
 ## Technologies Used
 - React
 - Tailwind Css
+- Firebase
+- React Router & Icon
+- Material UI
+
 
 ## Installation
 
@@ -33,10 +43,10 @@ To get started, follow these steps:
    ```
 
 
-# MovieWebsite Project Structure
+# Movie-website Project Structure
 
 ```text
-movieWebsite/
+movie-website/
 eslint.config.js
 index.html
 package-lock.json
@@ -53,24 +63,23 @@ src
 │   ├── api.js
 ├── App.jsx
 ├── assets
+│   ├── desktop.ini
+│   ├── live.png
 ├── components
 │   ├── Card.jsx
 │   ├── Footer.jsx
 │   ├── Hero.jsx
 │   ├── Layout.jsx
-│   ├── movie
-│   │   ├── MovieHero.jsx
-│   ├── navbar
+│   ├── MovieHero.jsx
+│   ├── Navbar
 │   │   ├── DynamicBar.jsx
 │   │   ├── MenuBar.jsx
-│   │   ├── Navbar.jsx
 │   │   ├── ThemeButton.jsx
+│   ├── Navbar.jsx
 │   ├── Profile.jsx
 │   ├── ProtectedRoute.jsx
-│   ├── search
-│   │   ├── SearchBar.jsx
-│   ├── shows
-│   │   ├── ShowsHero.jsx
+│   ├── SearchBar.jsx
+│   ├── ShowsHero.jsx
 │   ├── VideoComponent.jsx
 ├── consts
 │   ├── NavbarConsts.jsx
@@ -84,14 +93,11 @@ src
 ├── main.jsx
 ├── pages
 │   ├── Details.jsx
-│   ├── home
-│   │   ├── HomePage.jsx
-│   ├── movie
-│   │   ├── MoviePage.jsx
+│   ├── HomePage.jsx
+│   ├── MoviePage.jsx
 │   ├── ProfilePage.jsx
 │   ├── SearchPage.jsx
-│   ├── shows
-│   │   ├── TvShowsPage.jsx
+│   ├── TvShowsPage.jsx
 ├── routes
 │   ├── DetailsRoutes.jsx
 │   ├── MainRoutes.jsx
@@ -99,8 +105,10 @@ src
 ├── RoutesConfig.jsx
 ├── services
 │   ├── firebase.js
+│   ├── fireStore.js
 tailwind.config.js
-vite.config.js 
+vercel.json
+vite.config.js
 ```
 
 
