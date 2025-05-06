@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { fetchDiscover, imagePath } from "../../api/api"
+import { fetchDiscover, imagePath } from "../api/api"
 
 
 function ShowsHero() {
