@@ -10,7 +10,7 @@ This repository contains the source code for a dynamic Movie Website. It is buil
 - 🎯 **Watchlist Management** – Add or remove movies from your watchlist with a single click.
 - 💾 **Persistent State** – Watchlist and preferences are saved per user, even on refresh.
 
-![Project Banner](./assets/live.png)
+![Project Banner](./src/assets/live.png)
 
 
 ## Technologies Used
