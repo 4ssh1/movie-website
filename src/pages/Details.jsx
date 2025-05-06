@@ -137,13 +137,14 @@ function Details() {
         type: type,
         overview: data?.overview
       }
-    setOpen(true)
-    // addDocToFireStore("watch_lists", watchListData)
-    const dataString = data?.id.toString()
-    await addToWatchList(user?.uid, dataString, watchListData)
-    const watchList = await isDatainWatchList(user?.uid, dataString)
-    setInWatchList(watchList)
+      // addDocToFireStore("watch_lists", watchListData)
+      const dataString = data?.id.toString()
+      await addToWatchList(user?.uid, dataString, watchListData)
+      const watchList = await isDatainWatchList(user?.uid, dataString)
+      setInWatchList(watchList)
+      setOpen(true)
       }
+      setOpen(true)
   }
 
   async function handleRemoveFromWatchList() {
@@ -208,11 +209,11 @@ function Details() {
                               
                             >
                               {inWatchList ? (
-                                <span className="inline-flex items-center gap-1" onClick={handleRemoveFromWatchList}>
+                                <span className="inline-flex items-center gap-1 hover:opacity-70" onClick={handleRemoveFromWatchList}>
                                   <GrStatusGood /> Added to WatchList
                                 </span>
                               ) : (
-                                <span className="inline-flex items-center gap-1" onClick={handleAddToWatchList}>
+                                <span className="inline-flex items-center gap-1 hover:opacity-70" onClick={handleAddToWatchList}>
                                   ➕ Add to WatchList
                                 </span>
                               )}
