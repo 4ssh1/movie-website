@@ -80,7 +80,7 @@ import { Avatar } from "@mui/material"
               <div className='absolute top-8 -left-6 z-10 backdrop-blur-xs'>
                 {
                   userPopUp && 
-                  <div ref={toolTipRef} className='leading-5.5 text-[9px] bg-slate-400 dark:[&_p]:hover:bg-slate-800 sm:text-sm sm:leading-8 [&_p]:rounded-[8px] sm:[&_p]:rounded-[12px]
+                  <div ref={toolTipRef} className=' bg-slate-400 dark:[&_p]:hover:bg-slate-800 text-sm leading-8 [&_p]:rounded-[8px] sm:[&_p]:rounded-[12px]
                 [&_p]:hover:bg-slate-200 dark:bg-slate-500 [&_p]:active:bg-slate-200  [&_p]:px-3 cursor-pointer rounded-[8px] sm:rounded-[12px] '>
                     <p onClick={navToWatchList}>WatchList</p>
                     <p onClick={logOut}>Logout</p>

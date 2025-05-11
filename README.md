@@ -4,7 +4,7 @@ This repository contains the source code for a dynamic Movie Website. It is buil
 
 ## 🎬 Features
 
-- 🔥 **Trending Filter** – Dynamically view movies by _Today_, _This Week_, _Popular_, or _Top Rated_.
+- 🔥 **Trending Filter** – Dynamically view movies and shows by _Today_, _This Week_, _Popular_, or _Top Rated_.
 - 🔍 **Search Functionality** – Instantly search for movies or shows by title.
 - ✅ **User Authentication** – Login with Google to access personalized features.
 - 🎯 **Watchlist Management** – Add or remove movies from your watchlist with a single click.
